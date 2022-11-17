@@ -1,0 +1,42 @@
+/// colors
+$mainColor: #E9971C;
+$textColor: #3A3A3A;
+$textDarkColor: #272727;
+$greenColor: #4E8445;
+$greenLightColor: #3BA00B;
+
+///fonts
+@mixin largeNone {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 18px;
+   line-height: 18px;
+}
+
+@mixin largeTight {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 18px;
+   line-height: 20px;
+}
+
+@mixin largeNormal {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 18px;
+   line-height: 24px;
+}
+
+@mixin regularNone {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 16px;
+   line-height: 18px;
+}
+
+@mixin regularTight {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 18px;
+   line-height: 20px;
+}

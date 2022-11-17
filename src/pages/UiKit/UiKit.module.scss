@@ -1,0 +1,33 @@
+@use '../../variables.scss' as v;
+
+.root {
+   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+   background-blend-mode: multiply, multiply;
+   width: 100vw;
+   height: 100vh;
+
+   .content {
+      margin: 0 auto;
+      background: linear-gradient(to top, #e6e9f0 0%, #2c3137 100%);
+      opacity: 0.5;
+      max-width: 1320px;
+      height: 100vh;
+      padding: 0px 30px;
+
+      @media screen and (min-width:992px) {
+         padding: 0 16px;
+      }
+
+      @media screen and (min-width:768px) {
+         padding: 0 20px;
+      }
+
+      @media screen and (min-width:768px) {
+         padding: 0 18px;
+      }
+
+      @media screen and (max-width:768px) {
+         padding: 0 15px;
+      }
+   }
+}
