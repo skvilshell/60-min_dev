@@ -1,88 +1,64 @@
 import React from 'react'
 import styles from './Header.module.scss'
 import { Link } from "react-router-dom"
+import logo from '../../assets/img/logo.svg'
+import BtnSuccess from '../BtnSuccess/BtnSucces'
+import Popup from '../Popup/Popup'
 
-export default function Header({ index, setShowMenu }) {
+
+
+export default function Header() {
+
+   let i = 2
+   const navArr = ["главная", "отели", "квартиры", "экстрим", "партнерам"]
+   const settings = [
+      { showLocation: true, isAuth: false },
+      { showLocation: false, isAuth: false },
+      { showLocation: false, isAuth: true },
+   ]
+   const [showMenu, setShowMenu] = React.useState(false)
+
    return (
       <header className={styles.root}>
-         <div className="header__container3">
-            <div className="header__title">
-               <div id="logo"></div>
-               <div className="header__text">
-                  <h1>60-мин.рф</h1>
-                  <p>отели на час</p>
-               </div>
-            </div>
-            <div className="header__container">
 
-               {settings[i].showLocation
-                  ? <div className="header__position">
-                     <div id="position"></div>
-                     <select>
-                        <option value="1">Сантк-Петербург</option>
-                        <option value="2">Москва</option>
-                        <option value="3">Донбасс</option>
-                     </select>
-                  </div>
-                  : null}
-
-               {settings[i].showMenu
-                  ? <div className="header__menu">
-                     <Link to="/">
-                        <div className="header__button">
-                           <p>главная</p>
-                        </div>
-                     </Link>
-                     <Link to="/">
-                        <div className="header__button">
-                           <p>отели</p>
-                        </div>
-                     </Link>
-                     <Link to="/">
-                        <div className="header__button">
-                           <p>квартиры</p>
-                        </div>
-                     </Link>
-                     <Link to="/">
-                        <div className="header__button">
-                           <p>экстрим</p>
-                        </div>
-                     </Link>
-                     <Link to="/">
-                        <div className="header__button">
-                           <p>партнерам</p>
-                        </div>
-                     </Link>
-                  </div>
-                  : null}
-            </div>
-
+         <div className={styles.logo_loc}>
+            <img className={styles.logo} src={logo} alt="Логотип" />
             {
-            settings[i].isAuth
-               ? <div className="header__user">
-
-                  {settings[i].showGreenButton
-                     ? <GreenButton title="Добавить объект" />
-                     : null}
-
-                  <div id="addition"></div>
-
-                  {settings[i].showUserInfo
-                     ? <div className="user__info">
-                        <div id="user"></div>
-                        <div className="header__mail">
-                           <p>ivanivanovgmail.com</p>
-                        </div>
-                     </div>
-                     : null}
-
-               </div>
-               : <div className="header__container2">
-                  <GreenButton title="Войти" />
-                  <div id="addition" onClick={() => { props.setShowMenu(1) }}></div>
-               </div>
+               settings[i].showLocation &&
+               (<Popup />)
             }
          </div>
+
+         <ul className={styles.header__menu}>
+            {
+               navArr.map((item, index) =>
+                  <li key={index}>
+                     <Link to="/" >
+                        <p>{item}</p>
+                     </Link>
+                  </li>
+               )
+            }
+         </ul>
+
+         {
+            settings[i].isAuth ?
+               <div className={styles.header__user}>
+                  <BtnSuccess title="Добавить объект" />
+                  <div className={styles.addition}></div>
+                  <div className={styles.user__info}>
+                     <div className={styles.user}></div>
+                     <div className={styles.header__mail}>
+                        <p>ivanivanovgmail.com</p>
+                     </div>
+                  </div>
+               </div>
+               : <div className={styles.header__container2}>
+                  <BtnSuccess title="Войти" />
+                  <div className={styles.addition} onClick={() => { setShowMenu(0) }}></div>
+               </div>
+         }
+
       </header>
    )
 }

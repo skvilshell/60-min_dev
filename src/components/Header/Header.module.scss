@@ -1,6 +1,130 @@
 @use "../../variables.scss" as v;
 
 .root {
-   height: 50vh;
-   background: v.$mainColor;
+   margin: 0 auto;
+   width: 100%;
+   background: #3f3838;
+   display: flex;
+   padding: 17px 16px;
+   justify-content: space-between;
+   align-items: center;
+
+   * {
+      @include v.largeNone;
+   }
+
+   .logo_loc {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .logo {
+         width: 173px;
+         height: 48px;
+      }
+   }
+
+
+
+
+   display: flex;
+   justify-content: space-between;
+
+   .header__position {
+      height: 29px;
+      display: flex;
+      justify-content: space-between;
+   }
+
+   .header__menu {
+      display: flex;
+      gap: 23px;
+      list-style: none;
+      color: #FFFFFF;
+   }
+
+
+   .header__user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .addition {
+         background-image: url("../../image/addition.svg");
+         width: 30px;
+         height: 20px;
+         background-repeat: no-repeat;
+         background-size: contain;
+         margin-left: 21px;
+         display: none;
+      }
+
+      .user__info {
+         display: flex;
+         width: 206px;
+         align-items: center;
+         justify-content: space-between;
+         margin-left: 12px;
+
+         .user {
+            background-image: url("../../image/position.svg");
+            width: 26.54px;
+            height: 26.68px;
+            background-repeat: no-repeat;
+            background-size: contain;
+         }
+
+         .header__mail {
+            width: 164px;
+
+            >p {
+               font-family: 'PT Sans';
+               font-style: normal;
+               font-weight: 700;
+               font-size: 16px;
+               color: #FFFFFF;
+            }
+         }
+      }
+   }
+
+   .header__container2 {
+      display: flex;
+      align-items: center;
+
+      .addition {
+         background-image: url("../../image/addition.svg");
+         width: 30px;
+         height: 20px;
+         background-repeat: no-repeat;
+         background-size: contain;
+         margin-left: 21px;
+         display: none;
+      }
+   }
+
+
+   @media screen and (max-width<600px) {
+      .header__position {
+         display: none;
+      }
+
+      .addition {
+         display: block;
+      }
+
+      .header__menu {
+         display: none;
+      }
+
+      .user__info {
+         display: none;
+      }
+   }
+
+   @media (width<400px) {
+      .greenButton {
+         display: none;
+      }
+   }
 }

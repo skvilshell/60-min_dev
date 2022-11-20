@@ -32,6 +32,16 @@ h3 {
   line-height: 32px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+
+  :hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
 :root {
   font-family: 'Inter', Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;

@@ -1,4 +1,5 @@
 import React from 'react'
+import s from './s.module.scss'
 
 export default function Main() {
    return (
