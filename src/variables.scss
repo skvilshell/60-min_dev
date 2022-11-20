@@ -4,6 +4,7 @@ $textColor: #3A3A3A;
 $textDarkColor: #272727;
 $greenColor: #4E8445;
 $greenLightColor: #3BA00B;
+$greenDarkColor: #346F18;
 
 ///fonts
 @mixin largeNone {
@@ -39,4 +40,13 @@ $greenLightColor: #3BA00B;
    font-style: normal;
    font-size: 18px;
    line-height: 20px;
+}
+
+/// effects
+@mixin glassPanel {
+   background: rgba(255, 255, 255, 0.1);
+   box-shadow: 0px -1px 4px rgba(217, 217, 217, 0.17), 0px 4px 4px rgba(0, 0, 0, 0.25);
+   backdrop-filter: blur(4px);
+   /* Note: backdrop-filter has minimal browser support */
+   border-radius: 25px;
 }

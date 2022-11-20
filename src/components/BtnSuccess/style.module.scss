@@ -1,0 +1,17 @@
+@use "../../variables.scss" as v;
+
+.root {
+   background: v.$greenColor;
+   border-radius: 15px;
+   height: 36px;
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   color: #fff;
+   margin: 10px 30px;
+
+   &:hover {
+      background: v.$greenDarkColor;
+   }
+}
