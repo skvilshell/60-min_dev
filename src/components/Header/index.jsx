@@ -9,7 +9,7 @@ import Popup from '../Popup/Popup'
 
 export default function Header() {
 
-   let i = 2
+   let i = 0
    const navArr = ["главная", "отели", "квартиры", "экстрим", "партнерам"]
    const settings = [
       { showLocation: true, isAuth: false },

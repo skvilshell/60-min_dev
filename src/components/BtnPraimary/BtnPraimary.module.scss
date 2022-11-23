@@ -1,0 +1,12 @@
+@use "../../variables.scss" as v;
+
+.root {
+   padding: 10px 27px;
+   @include v.regularNone;
+   background: v.$mainColor;
+   color: #fff;
+   border-radius: 15px;
+   outline: none;
+   border: none;
+   
+}

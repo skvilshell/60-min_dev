@@ -1,0 +1,15 @@
+@use "../../variables.scss" as v;
+
+.root {
+   @include v.glassPanel;
+   padding: 10px 18px;
+   position: relative;
+   display: flex;
+   gap: 20px;
+
+   .active {
+      background: v.$mainColor;
+      color: #EFEFEF;
+      border: none;
+   }
+}

@@ -11,10 +11,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       <Routes>
         <Route path='/' element={<Main />} />
-
         <Route path='/*' element={<NotFound />} />
       </Routes>
       <Footer />

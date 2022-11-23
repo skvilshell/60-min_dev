@@ -1,0 +1,22 @@
+@use "../../variables.scss" as v;
+
+.root {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 40px;
+   padding: 0 20px;
+   background: #EFEFEF;
+   border-radius: 20px;
+   height: 60px;
+
+   .title {
+      @include v.regularNone;
+      color: v.$textColor;
+   }
+
+   .arrow {
+      width: 9.84px;
+      height: 6.68px;
+   }
+}

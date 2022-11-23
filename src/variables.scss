@@ -42,6 +42,36 @@ $greenDarkColor: #346F18;
    line-height: 20px;
 }
 
+@mixin regularNone {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 16px;
+   line-height: 24px;
+}
+
+@mixin smallNone {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 14px;
+   line-height: 14px;
+}
+@mixin smallTight {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 14px;
+   line-height: 16px;
+}
+@mixin smallNormal {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 14px;
+   line-height: 20px;
+}
+
+@mixin tinyNone {}
+@mixin tinyTight{}
+@mixin tinyNormal {}
+
 /// effects
 @mixin glassPanel {
    background: rgba(255, 255, 255, 0.1);
