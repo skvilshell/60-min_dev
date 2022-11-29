@@ -1,0 +1,10 @@
+@use '../../variables.scss' as v;
+
+.root{
+   width: 1110px;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-template-rows: repeat(2, 1fr);
+   gap: 30px;
+}

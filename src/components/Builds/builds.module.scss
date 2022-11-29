@@ -1,0 +1,162 @@
+@use '../../variables.scss' as v;
+
+.root {
+    width: 100%;
+    height: 100%;
+    padding: 3% 5%;
+
+    .builds__header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .select {
+            position: relative;
+            cursor: pointer;
+
+            * {}
+
+            .sort__label {
+                display: flex;
+                align-items: center;
+
+                svg {
+                    margin-left: 8px;
+                    color: #949494;
+
+                    &.active {
+                        transform: rotate(180deg);
+                    }
+                }
+
+
+                span {}
+            }
+
+            .sort__popup {
+                position: absolute;
+                left: 0;
+                margin-top: 0px;
+                background: #ffffff;
+                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+                border-radius: 10px;
+                overflow: hidden;
+                padding: 10px 0;
+                width: 250px;
+
+                ul {
+                    overflow: hidden;
+
+                    li {
+                        padding: 12px 20px;
+                        cursor: pointer
+                    }
+
+                    li.active,
+                    li:hover {
+                        background: rgba(254, 95, 30, 0.05)
+                    }
+
+                    li.active {
+                        font-weight: bold;
+                        color: #fe5f1e;
+                    }
+                }
+            }
+        }
+
+        >h1 {
+            color: #272727;
+        }
+
+        .zaglushka {
+            background-color: #949494;
+            width: 523.83px;
+            height: 86px;
+        }
+    }
+
+    .facilitys {
+        margin-top: 40px;
+        display: grid;
+        grid-template-rows: repeat(2, 440px);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+    }
+
+    .zaglushka2 {
+        margin: 40px auto;
+        width: 614px;
+        height: 72px;
+        background-color: #949494;
+    }
+}
+
+@media (width<992px) {
+    .root {
+        .facilitys {
+            display: grid;
+            grid-template-rows: repeat(3, 440px);
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (width<768px) {
+    .root {
+
+        .builds__header {
+
+            .mainFacility {
+                width: 350px;
+                height: 480px;
+            }
+
+            .zaglushka {
+                width: 276px;
+                height: 607px;
+            }
+        }
+
+        .facilitys {
+            display: grid;
+            grid-template-rows: repeat(3, 380px);
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (width<576px) {
+    .root {
+        padding-left: 24px;
+        padding-right: 24px;
+
+        .builds__header {
+            display: block;
+
+            .zaglushka {
+                margin-top: 20px;
+                width: 100%;
+                height: 226px;
+            }
+        }
+
+        .facilitys {
+            display: grid;
+            grid-template-rows: repeat(3, 250px);
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .zaglushka2 {
+            width: 275px;
+            height: 72px;
+        }
+    }
+}
+
+@media (width<420px) {
+    .facilitys {
+        gap: 20px !important;
+        grid-template-rows: repeat(3, 211px) !important;
+    }
+}

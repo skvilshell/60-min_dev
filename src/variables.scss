@@ -5,6 +5,9 @@ $textDarkColor: #272727;
 $greenColor: #4E8445;
 $greenLightColor: #3BA00B;
 $greenDarkColor: #346F18;
+$mainColorHover: #FF8100;
+$secondDarkColor: #6F6F6F;
+$white: #FFFFFF;
 
 ///fonts
 @mixin largeNone {
@@ -55,12 +58,14 @@ $greenDarkColor: #346F18;
    font-size: 14px;
    line-height: 14px;
 }
+
 @mixin smallTight {
    font-family: 'Inter';
    font-style: normal;
    font-size: 14px;
    line-height: 16px;
 }
+
 @mixin smallNormal {
    font-family: 'Inter';
    font-style: normal;
@@ -68,9 +73,26 @@ $greenDarkColor: #346F18;
    line-height: 20px;
 }
 
-@mixin tinyNone {}
-@mixin tinyTight{}
-@mixin tinyNormal {}
+@mixin tinyNone {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 12px;
+   line-height: 12px;
+}
+
+@mixin tinyTight {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 12px;
+   line-height: 14px;
+}
+
+@mixin tinyNormal {
+   font-family: 'Inter';
+   font-style: normal;
+   font-size: 12px;
+   line-height: 16px;
+}
 
 /// effects
 @mixin glassPanel {
@@ -80,3 +102,6 @@ $greenDarkColor: #346F18;
    /* Note: backdrop-filter has minimal browser support */
    border-radius: 25px;
 }
+
+
+   $shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

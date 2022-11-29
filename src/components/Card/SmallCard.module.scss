@@ -1,0 +1,91 @@
+@use '../../variables.scss' as v;
+
+.root {
+    width: 139px;
+    height: 211px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: white;
+
+    p {
+        color: v.$secondDarkColor;
+        @include v.largeNone;
+        font-size: 9.39429px;
+        line-height: 9px;
+    }
+
+    .text {
+        padding: 4.51px 9px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 50%;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 60%
+        }
+    }
+
+    .title {
+        text-align: center;
+
+        >p {
+            font-weight: 700;
+            color: black;
+            font-size: 14.0914px;
+            line-height: 14px;
+        }
+    }
+
+    .position {
+        display: none;
+    }
+
+    .metro__time {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        height: 60%;
+
+        >.metro {
+            display: flex;
+            align-items: center;
+        }
+
+        >.time {
+            align-items: center;
+            display: flex;
+        }
+    }
+
+    #time {
+        width: 16%;
+        aspect-ratio: 1/1;
+    }
+
+    .price__button {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+        p {
+            font-weight: 400;
+            color: black;
+            font-size: 12px;
+            line-height: 12px;
+
+            span {
+                @include v.smallNone;
+            }
+        }
+
+        button {
+            display: none;
+        }
+    }
+}

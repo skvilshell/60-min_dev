@@ -1,0 +1,142 @@
+@use '../../variables.scss' as v;
+
+
+
+.root {
+   height: 630px;
+   width: 830px;
+   display: grid;
+   grid-template-rows: auto 90px;
+   *{
+      user-select: none;
+   }
+
+   .carusel {
+      position: relative;
+      height: 526px;
+      display: flex;
+      align-items: center;
+
+      .arrowLeft {
+         z-index: 2;
+         position: absolute;
+         left: 10px;
+         width: 90px;
+         border-radius: 10px;
+         transform: rotate(180deg);
+         padding: 20px;
+         background-color: #00000066;
+
+         &:hover {
+            background-color: #0000009e;
+         }
+      }
+
+      .arrowRight {
+         position: absolute;
+
+         right: 10px;
+         width: 90px;
+         border-radius: 10px;
+         padding: 20px;
+         background-color: #00000066;
+
+         &:hover {
+            background-color: #0000009e;
+         }
+      }
+
+      .container {
+         width: 100%;
+         height: 100%;
+         display: flex;
+         overflow: hidden;
+
+         .window {
+            min-width: 100%;
+            max-width: 100%;
+            transition: 0.3s ease all;
+            height: 100%;
+
+            .img {
+               width: 100%;
+               height: 100%;
+               object-fit: contain;
+               object-position: center;
+            }
+         }
+      }
+   }
+
+   .gallery {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .arrowLeft {
+         width: 50px;
+         border-radius: 10px;
+         height: 50px;
+         padding: 10px;
+         transform: rotate(180deg);
+         background-color: #00000066;
+
+         &:hover {
+            background-color: #0000009e;
+         }
+      }
+
+      .arrowRight {
+
+         width: 50px;
+         border-radius: 10px;
+         height: 50px;
+         padding: 10px;
+         background-color: #00000066;
+
+         &:hover {
+            background-color: #0000009e;
+         }
+      }
+
+      .box {
+         width: 50px;
+         height: 100%;
+         background: transparent;
+      }
+
+      .container {
+         display: flex;
+         height: 100%;
+         width: 693px;
+         overflow: hidden;
+         border-radius: 7px;
+
+
+         .window {
+            min-width: 154px;
+            max-width: 154px;
+            height: 100%;
+            padding: 0 7px;
+            transition: 0.3s all ease;
+
+            img {
+               border-radius: 7px;
+               overflow: hidden;
+               border: 3px solid v.$secondDarkColor;
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               object-position: center;
+            }
+
+            .active {
+               border: 3px solid v.$mainColor;
+            }
+         }
+
+
+
+      }
+   }
+}
