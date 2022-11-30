@@ -1,9 +1,13 @@
 import React from 'react'
 import s from './carusel.module.scss'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import arrow from '../../assets/img/arrow.svg'
 
 
+
+//* размер элемента галлереии 16.72%
+//* размер окна 79.58%
+//* размер контейнера 66.06%
 
 
 
@@ -106,11 +110,19 @@ export default function Carusel({ arr }) {
                            transform: `translateX(${translatePage}%)`
                         }}
                      >
-                        <img
+                        {/* <img
                            className={(currentImg == img.index) && s.active}
                            src={img.url}
                            alt=""
-                        />
+                        /> */}
+                        <div
+                           className={s.img + ' ' + ((currentImg == img.index) && s.active)}
+                           style={{
+                              background: `url('${img.url}') center/cover no-repeat`
+                           }}
+                        >
+
+                        </div>
                      </div>
                   ))
                }

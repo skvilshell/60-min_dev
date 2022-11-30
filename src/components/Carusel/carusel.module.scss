@@ -3,11 +3,9 @@
 
 
 .root {
-   height: 630px;
-   width: 830px;
-   display: grid;
-   grid-template-rows: auto 90px;
-   *{
+   width: 100%;
+
+   * {
       user-select: none;
    }
 
@@ -66,9 +64,28 @@
             }
          }
       }
+
+      @media screen and (max-width: 1200px) {
+         height: 450px;
+      }
+
+      @media screen and (max-width: 996px) {
+         .arrowLeft {
+            width: 50px;
+         }
+
+         .arrowRight {
+            width: 50px;
+         }
+      }
+
+      @media screen and (max-width: 772px) {
+         height: 300px;
+      }
    }
 
    .gallery {
+      margin-top: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -84,6 +101,14 @@
          &:hover {
             background-color: #0000009e;
          }
+
+         @media screen and (max-width: 996px) {
+            height: 30px;
+            width: 30px;
+         }
+         @media screen and (max-width: 576px) {
+            display: none;
+         }
       }
 
       .arrowRight {
@@ -97,44 +122,85 @@
          &:hover {
             background-color: #0000009e;
          }
+
+         @media screen and (max-width: 996px) {
+            height: 30px;
+            width: 30px;
+         }
+         @media screen and (max-width: 576px) {
+            display: none;
+         }
       }
 
       .box {
          width: 50px;
          height: 100%;
          background: transparent;
+         @media screen and (max-width: 576px) {
+            display: none;
+         }
       }
 
       .container {
          display: flex;
          height: 100%;
-         width: 693px;
+         width: 79.58%;
          overflow: hidden;
          border-radius: 7px;
 
 
          .window {
-            min-width: 154px;
-            max-width: 154px;
+            min-width: 22.19%;
+            max-width: 22.19%;
             height: 100%;
             padding: 0 7px;
             transition: 0.3s all ease;
 
-            img {
+            .img {
                border-radius: 7px;
                overflow: hidden;
                border: 3px solid v.$secondDarkColor;
                width: 100%;
-               height: 100%;
-               object-fit: cover;
-               object-position: center;
+               height: 0;
+               padding-bottom: 63.62%;
+               @media screen and (max-width: 576px) {
+                  border: 1px solid v.$secondDarkColor;
+               }
             }
 
             .active {
                border: 3px solid v.$mainColor;
+               @media screen and (max-width: 576px) {
+                  border: 1px solid v.$mainColor;
+               }
+            }
+
+            @media screen and (max-width: 1200px) {
+               min-width: 25.19%;
+               max-width: 25.19%;
+            }
+
+            @media screen and (max-width: 772px) {
+               padding: 0 3px;
             }
          }
 
+
+         @media screen and (max-width: 1400px) {}
+
+         @media screen and (max-width: 1200px) {}
+
+         @media screen and (max-width: 996px) {
+            width: 90.58%;
+            ;
+         }
+
+         @media screen and (max-width: 772px) {}
+
+         @media screen and (max-width: 576px) {
+            overflow-x: scroll;
+            width: 100%;
+         }
 
 
       }

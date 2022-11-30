@@ -16,7 +16,19 @@
    }
 
    .arrow {
+      transform: rotate(90deg);
       width: 9.84px;
       height: 6.68px;
    }
+
+   &.active {  
+      background: v.$mainColor;
+      p{
+         color: #EFEFEF;
+      }
+      .arrow {
+         transform: rotate(-90deg);
+      }
+   }
+
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CardsJSON from '../../assets/db/catalog.json'
 import Card from '../../components/Card'
 import Carusel from '../../components/Carusel/Carusel'
@@ -45,6 +45,7 @@ const imgArray = [
 
 export default function Catalog() {
 
+
    const cards = CardsJSON.map((item, index) =>
       <Card
          key={index}
@@ -59,8 +60,12 @@ export default function Catalog() {
 
    return (
       <div className={s.root}  >
+         <div className={s.container}>
+            <div className={s.content}>
+               <Carusel arr={imgArray} />
+            </div>
+         </div>
 
-         {cards}
 
       </div>
    )
