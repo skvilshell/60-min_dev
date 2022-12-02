@@ -9,11 +9,6 @@
    display: flex;
    justify-content: center;
    align-items: center;
-
-
-
-   .title {
-      @include v.regularNone;
-      color: v.$textColor;
-   }
+   @include v.regularNone;
+   color: v.$textColor;
 }

@@ -1,0 +1,64 @@
+@use '../../variables.scss' as v;
+
+.root {
+   position: relative;
+
+   .dropdown_btn {
+      user-select: none;
+      padding: 8px 15px;
+      background: #EFEFEF;
+      border: 2px solid rgba(180, 180, 180, 0.6);
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: v.$textColor ;
+
+      p {
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+      }
+
+      svg {
+         transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+      }
+
+      .active {
+         transform: rotate(180deg);
+         transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+      }
+   }
+
+   .dropdown_content {
+      width: 100%;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: #EFEFEF;
+      border: 2px solid rgba(180, 180, 180, 0.6);
+      border-radius: 20px;
+      padding: 10px 5px;
+      box-shadow: v.$shadow;
+
+
+      .dropdow_element {
+         color: v.$textColor ;
+         padding: 4px 8px;
+         border-radius: 8px;
+
+         &:hover {
+            background: v.$lightMainColor;
+         }
+      }
+
+      .active{
+         color: #EFEFEF;
+         background: v.$mainColor;
+         &:hover{
+            background: v.$mainColor;;
+         }
+      }
+
+   }
+}
