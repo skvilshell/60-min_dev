@@ -21,9 +21,6 @@
 
     .text {
         padding: 9px 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         height: 50%;
 
         .container {
@@ -36,6 +33,7 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                color: v.$textColor;
             }
 
             .title {
@@ -101,11 +99,11 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        color: v.$textColor;
 
         h3 span {
             @include v.regularNone;
             font-weight: normal;
-            color: black;
         }
     }
 }

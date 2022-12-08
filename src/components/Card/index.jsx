@@ -18,17 +18,21 @@ export default function Card({ title, position, metro, time, price, size1 }) {
             <div className={styles[size].text}>
                 <div className={styles[size].container}>
                     <h3 className={styles[size].title}>{title}</h3>
-                    <p className={styles[size].position}>{position}</p>
+                    {
+                        size !== 2 && <p className={styles[size].position}>{position}</p>
+                    }
                     <p className={styles[size].metro}>{metro}</p>
                     <p className={styles[size].time}>{time}</p>
                 </div>
             </div>
             <div className={styles[size].price__button}>
                 <h3><span>от </span>{price}<span> руб</span></h3>
-                <BtnPraimary
-                    className={styles[size].btn}
-                    title={"подробнее"}
-                />
+                {
+                    size !== 2 && <BtnPraimary
+                        className={styles[size].btn}
+                        title={"подробнее"}
+                    />
+                }
             </div>
         </div>
     )

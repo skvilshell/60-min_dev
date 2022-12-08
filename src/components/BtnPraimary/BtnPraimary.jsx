@@ -1,9 +1,9 @@
 import React from 'react'
 import s from './BtnPraimary.module.scss'
 
-export default function BtnPraimary({ title }) {
+export default function BtnPraimary({ title, Click }) {
    return (
-      <button className={s.root}>
+      <button onClick={() => Click()} className={s.root}>
          {title}
       </button>
    )

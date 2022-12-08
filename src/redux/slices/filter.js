@@ -9,7 +9,7 @@ export const initialState = {
       title: "тип аренды"
    },
    timeRental: {
-      title: "тип аренды"
+      title: "время аренды"
    },
    price: {
       title: "цена"

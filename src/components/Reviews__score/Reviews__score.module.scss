@@ -1,0 +1,42 @@
+@use '../../variables.scss' as v;
+
+.root {
+    margin-top: 10px;
+    @include v.largeNone;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .wrapper {
+        background-color: #dddddd;
+        width: 40%;
+        border-radius: 20px;
+
+        .score {
+            background-color: v.$mainColorHover;
+            border-radius: 20px;
+            padding: 0;
+
+            >p {
+                font-family: "Inter";
+                font-style: normal;
+                color: #fff;
+                font-size: 13px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media (width<1200px) {
+    .root {
+        width: 100%;
+    }
+}
+
+@media (width<560px) {
+    .title {
+        font-size: 13px;
+    }
+}

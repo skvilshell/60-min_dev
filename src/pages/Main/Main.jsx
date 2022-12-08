@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import s from './s.module.scss'
 import { useSelector } from "react-redux"
 import SearchPanel from '../../components/SearchPanel/SearchPanel'
@@ -10,10 +10,20 @@ import svgStat from '../../assets/img/statistic.svg'
 import svgAllin from '../../assets/img/allin.svg'
 import Carusel from '../../components/Carusel/Carusel'
 
+import Cards from '../../assets/db/cards.json'
+import Card from '../../components/Card'
+import axios from 'axios'
+
 
 export default function Main() {
 
    const activeCity = useSelector(state => state.city.city)
+
+   useEffect(() => {
+      fetch(`https://60-min.ru/hotel?city=${activeCity.name}`)
+         .then((res) => res.json())
+         .then((res) => console.log(res))
+   }, [activeCity])
 
    return (
       <main className={s.root}>
@@ -43,7 +53,15 @@ export default function Main() {
             <div className={s.container}>
                <div className={s.cards}>
                   {
-                     [...new Array(6)].map((_, index) => <CardMedium key={index} />)
+                     Cards.map((item, index) =>
+                        <Card
+                           key={item.id}
+                           title={item.title}
+                           position={item.address}
+                           metro={`${item.metro_id}`}
+                           time={'от 2х'}
+                           price={"1000"}
+                        />)
                   }
                </div>
 

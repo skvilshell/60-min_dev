@@ -1,6 +1,11 @@
 @use '../../variables.scss' as v;
 
 .root {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   justify-content: space-evenly;
+   justify-items: center;
+   gap: 40px;
    .container {
       width: 1320px;
       margin: 0 auto;

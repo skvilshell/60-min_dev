@@ -1,0 +1,28 @@
+@use '../../variables.scss' as v;
+
+.root{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    padding: 21px;
+
+    .title{
+        color: v.$textColor;
+    }
+
+    .preview{
+        margin-top: 20px;
+    }
+
+    .container{
+        margin: 0 auto;
+        margin-top: 12px;
+        width: 196px;
+
+        .button{
+            margin-top: 11px;
+            width: 100%;
+        }
+    }
+}

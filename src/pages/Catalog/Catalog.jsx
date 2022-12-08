@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import CardsJSON from '../../assets/db/catalog.json'
 import Card from '../../components/Card'
 import Carusel from '../../components/Carusel/Carusel'
+import Residential from '../../components/Residential'
+import Room from '../../components/Room'
 import s from './catalog.module.scss'
 
 const imgArray = [
@@ -45,6 +47,21 @@ const imgArray = [
 
 export default function Catalog() {
 
+   const resident = (<Residential
+      title={'мать шлюха'}
+      position={'kdsalkdmsalk'}
+      rate={'rate'}
+      description={'djashdjkas djfgdfg dfgdjashdj kasdjfgdfg dfgdjashdjkas djfgdfgdfgdj a shdjkasdjfgdfgd f gdjashdjkasd jfgd fgdfgdjash djkasdjfg dfgdfgdjashdjkasdj fgdfgdfgdjashdjk asdj f gdfg dfgdja shdjkasdjfgdfgdfgdjas hdjkasdjfgdfgdfgdj ashdjkasdj fg dfgdfgdjas hdjkasdjfgdfgdfgdjashdjkasdjf gdfgdfgdjashd jkasdjfgdfgdfgdjashdjkasdjfgdfgdfg'}
+      inTime={'djashdjkasdjfgdfgdfg'}
+      outTime={'djashdjkasdjfgdfgdfg'}
+      features={['djashdjkasdjfgdfgdfg', 'djashdjkasdjfgdfgdfg', 'djashdjkasdjfgdfgdfg']}
+      rendTitle={'djashdjkasdjfgdfgdfg'}
+      metro={'djashdjkasdjfgdfgdfg'}
+      clock={'djashdjkasdjfgdfgdfg'}
+      numbers={'djashdjkasdjfgdfgdfg'}
+      mainPrice={'1000'}
+   />)
+
 
    const cards = CardsJSON.map((item, index) =>
       <Card
@@ -54,19 +71,13 @@ export default function Catalog() {
          metro={item.metro}
          time={item.time}
          price={item.price}
-         size1={item.size}
+         size1={2}
       />
    )
 
    return (
       <div className={s.root}  >
-         <div className={s.container}>
-            <div className={s.content}>
-               <Carusel arr={imgArray} />
-            </div>
-         </div>
-
-
+         {cards}
       </div>
    )
 }
