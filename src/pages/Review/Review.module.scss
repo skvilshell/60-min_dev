@@ -1,0 +1,107 @@
+@use "../../variables.scss" as v;
+
+.review {
+  box-sizing: border-box;
+  background: #ffffff;
+  width: 70%;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px auto 100px auto;
+
+  .title {
+    @include v.largeNormal;
+
+    margin-bottom: 30px;
+  }
+
+  .list_rate {
+    list-style: none;
+
+    .li_item {
+      margin: 25px 0;
+
+      label {
+        display: inline-block;
+        margin-bottom: 15px;
+      }
+
+      .grades {
+        button:first-child {
+          border-radius: 20px 0 0 20px;
+        }
+        button:last-child {
+          border-radius: 0 20px 20px 0;
+        }
+        button:hover {
+          background: #cdcccc;
+          transition: 0.25s;
+        }
+      }
+    }
+  }
+
+  .textArea_container {
+    p {
+      margin-bottom: 15px;
+    }
+    textarea {
+      width: 85%;
+      height: 120px;
+      padding: 8px 15px;
+      background: #b4b4b499;
+      border: #efefef;
+      border-radius: 20px;
+      resize: none;
+      color: #6f6f6f;
+    }
+    .textArea_Dignity {
+      margin-bottom: 25px;
+    }
+    .textArea_Limitation {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .review {
+    font-size: 16px;
+    padding: 20px;
+    align-content: center;
+    width: 90%;
+    .grades {
+      width: 100%;
+      button {
+        width: 20%;
+        padding: 15px 20px;
+      }
+    }
+    .textArea_container {
+      textarea {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 361px) {
+  .review {
+    padding: 15px;
+    .grades {
+      button {
+        padding: 10px 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .review {
+    .grades {
+      button {
+        padding: 15px 10px;
+      }
+    }
+  }
+}
