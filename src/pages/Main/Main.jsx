@@ -9,7 +9,7 @@ import svgMap from "../../assets/img/map.svg";
 import svgStat from "../../assets/img/statistic.svg";
 import svgAllin from "../../assets/img/allin.svg";
 import Carusel from "../../components/Carusel/Carusel";
-import Rewiew from "../../components/Review/Rewiew";
+import Rewiew from "../Review/Rewiew";
 
 export default function Main() {
   const activeCity = useSelector((state) => state.city.city);

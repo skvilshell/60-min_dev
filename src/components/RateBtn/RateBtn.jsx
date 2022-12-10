@@ -9,7 +9,12 @@ export default function RateBtn({ grades, rating }) {
   return (
     <>
       {grades.map((grade) => (
-        <button key={grade} value={grade} onClick={getRate}>
+        <button
+          key={grade}
+          value={grade}
+          onClick={getRate}
+          className={styles.rating}
+        >
           {grade}
         </button>
       ))}

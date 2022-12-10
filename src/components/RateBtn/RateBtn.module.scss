@@ -1,1 +1,10 @@
 @use "../../variables.scss" as v;
+
+.rating {
+  cursor: pointer;
+  padding: 7px 20px;
+  border-radius: 0;
+  background: rgba(239, 239, 239, 0.6);
+  border: #efefef;
+  color: #3a3a3a;
+}

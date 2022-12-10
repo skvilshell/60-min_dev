@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import RateBtn from "../RateBtn/RateBtn";
-import BtnPraimary from "../BtnPraimary/BtnPraimary";
+import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
+import RateBtn from "../../components/RateBtn/RateBtn";
+
 import styles from "./Review.module.scss";
 
 export default function Rewiew() {
@@ -55,22 +56,36 @@ export default function Rewiew() {
 
   return (
     <div className={styles.review}>
-      <p className={styles.title}>Отзыв. Квартира на ул.Пулковской, 8</p>
+      <h1 className={styles.title}>Отзыв. Квартира на ул.Пулковской, 8</h1>
       <ul className={styles.list_rate}>
         {factors.map((factor) => (
-          <li key={factor.id}>
-            <label htmlFor={factor.id}>{factor.label}</label>
+          <li key={factor.id} className={styles.li_item}>
+            <label htmlFor={factor.id} className={styles.label}>
+              {factor.label}
+            </label>
             <div id={factor.id} className={styles.grades}>
               <RateBtn grades={grades} rating={setRating} />
             </div>
           </li>
         ))}
       </ul>
-      <p>Напишите о достоинствах</p>
-      <textarea value={dignity} onChange={handleChangeDignity} />
-      <p>Напишите о достоинствах</p>
-      <textarea value={limitation} onChange={handleChangeLimitation} />
-      <button onClick={sendReview}>Отправить отзыв</button>
+      <div className={styles.textArea_container}>
+        <p>Напишите о достоинствах</p>
+        <textarea
+          value={dignity}
+          onChange={handleChangeDignity}
+          className={styles.textArea_Dignity}
+          placeholder="Опишите, что вам понравилось"
+        />
+        <p>Напишите о достоинствах</p>
+        <textarea
+          value={limitation}
+          onChange={handleChangeLimitation}
+          placeholder="Опишите, что вам не понравилось"
+          className={styles.textArea_Limitation}
+        />
+        <BtnPraimary title="Отправить отзыв" className="btn-primary" />
+      </div>
     </div>
   );
 }
