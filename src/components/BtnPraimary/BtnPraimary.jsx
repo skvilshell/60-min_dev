@@ -1,5 +1,5 @@
-import React from 'react'
-import s from './BtnPraimary.module.scss'
+import React from "react";
+import s from "./BtnPraimary.module.scss";
 
 export default function BtnPraimary({ title, Click }) {
    return (
