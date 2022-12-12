@@ -1,18 +1,18 @@
 import React from "react";
-import { useState } from "react";
+
+import { useForm } from "react-hook-form";
 import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
-import RateBtn from "../../components/RateBtn/RateBtn";
 
 import styles from "./Review.module.scss";
 
 export default function Rewiew() {
-  const [dignity, setDignity] = useState("");
-  const [limitation, setLimitation] = useState("");
-  const [rating, setRating] = useState(0);
-  const [review, setReview] = useState({
-    dignity,
-    limitation,
-    rating,
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
   });
   const factors = [
     {
@@ -32,60 +32,52 @@ export default function Rewiew() {
       label: "Оцените соотношение цена-качество",
     },
   ];
-  const grades = [1, 2, 3, 4, 5];
+  const grades = ["1", "2", "3", "4", "5"];
 
-  const handleChangeDignity = (e) => {
-    setDignity(e.target.value);
-  };
-  const handleChangeLimitation = (e) => {
-    setLimitation(e.target.value);
-  };
-
-  const sendReview = (e) => {
-    e.preventDefault();
-    setReview({
-      dignity,
-      limitation,
-      rating,
-    });
-    console.log(review);
-    setDignity("");
-    setLimitation("");
-    setRating(0);
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
   };
 
   return (
     <div className={styles.review}>
       <h1 className={styles.title}>Отзыв. Квартира на ул.Пулковской, 8</h1>
-      <ul className={styles.list_rate}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.list_rate}>
         {factors.map((factor) => (
-          <li key={factor.id} className={styles.li_item}>
-            <label htmlFor={factor.id} className={styles.label}>
+          <div>
+            <label htmlFor={factor.id}>
               {factor.label}
+              <div id={factor.id} className={styles.rate_item}>
+                {grades.map((grade) => (
+                  <label className={styles.rate__label}>
+                    {grade}
+                    <input
+                      type="radio"
+                      value={grade}
+                      className={styles.rate__input}
+                      {...register(`${factor.id}`, {
+                        required: true,
+                      })}
+                    />
+                  </label>
+                ))}
+              </div>
             </label>
-            <div id={factor.id} className={styles.grades}>
-              <RateBtn grades={grades} rating={setRating} />
-            </div>
-          </li>
+          </div>
         ))}
-      </ul>
-      <div className={styles.textArea_container}>
-        <p>Напишите о достоинствах</p>
-        <textarea
-          value={dignity}
-          onChange={handleChangeDignity}
-          className={styles.textArea_Dignity}
-          placeholder="Опишите, что вам понравилось"
-        />
-        <p>Напишите о достоинствах</p>
-        <textarea
-          value={limitation}
-          onChange={handleChangeLimitation}
-          placeholder="Опишите, что вам не понравилось"
-          className={styles.textArea_Limitation}
-        />
-        <BtnPraimary title="Отправить отзыв" className="btn-primary" />
-      </div>
+        <div className={styles.textArea_container}>
+          <p>Напишите о достоинствах</p>
+          <textarea
+            {...register("dignities", { required: true })}
+            className={styles.textArea_Dignity}
+          />
+          <p>Напишите о недостатках</p>
+          <textarea {...register("limitations", { required: true })} />
+        </div>
+        <div className={styles.btn_priamary}>
+          <BtnPraimary title="Отправить отзыв" />
+        </div>
+      </form>
     </div>
   );
 }

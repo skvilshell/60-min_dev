@@ -1,18 +1,18 @@
 @use "../../variables.scss" as v;
 
 .root {
-   padding: 10px 27px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   @include v.regularNone;
-   background: v.$mainColor;
-   color: #fff;
-   border-radius: 15px;
-   outline: none;
-   border: none;
+  padding: 10px 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include v.regularNone;
+  background: v.$mainColor;
+  color: #fff;
+  border-radius: 15px;
+  outline: none;
+  border: none;
 
-   &:hover {
-      background-color: v.$mainColorHover;
-   }
+  &:hover {
+    background-color: v.$mainColorHover;
+  }
 }
