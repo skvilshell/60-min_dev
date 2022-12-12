@@ -19,6 +19,7 @@ function App() {
         <Route path="/*" element={<NotFound />} />
         <Route path="/review" element={<Rewiew />} />
       </Routes>
+
       <Footer />
     </div>
   );
