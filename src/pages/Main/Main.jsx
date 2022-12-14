@@ -11,6 +11,7 @@ import svgStat from "../../assets/img/statistic.svg";
 import svgAllin from "../../assets/img/allin.svg";
 import Carusel from "../../components/Carusel/Carusel";
 import Rewiew from "../Review/Rewiew";
+import AddEstate from "../AddEstate/AddEstate";
 
 export default function Main() {
   const activeCity = useSelector((state) => state.city.city);
@@ -133,8 +134,7 @@ export default function Main() {
         </p>
         <BtnPraimary className="btn" title={"Подобрать решение для вас"} />
       </section>
-      <Rewiew />
-      <MapSearch />
+      <AddEstate />
     </main>
   );
 }
