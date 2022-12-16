@@ -17,19 +17,19 @@ export default function Rewiew() {
   const factors = [
     {
       id: "clean",
-      label: "Оцените чистоту",
+      label: "Чистота",
     },
     {
       id: "personal",
-      label: "Оцените персонал",
+      label: "Персонал",
     },
     {
       id: "place",
-      label: "Оцените местоположение",
+      label: "Местоположение",
     },
     {
       id: "equal",
-      label: "Оцените соотношение цена-качество",
+      label: "Соотношение цена-качество",
     },
   ];
   const grades = [1, 2, 3, 4, 5];
@@ -56,7 +56,7 @@ export default function Rewiew() {
 
   return (
     <div className={styles.review}>
-      <h1 className={styles.title}>Отзыв. Квартира на ул.Пулковской, 8</h1>
+      <h3 className={styles.title}>Отзыв. Квартира на ул.Пулковской, 8</h3>
       <ul className={styles.list_rate}>
         {factors.map((factor) => (
           <li key={factor.id} className={styles.li_item}>
@@ -89,3 +89,6 @@ export default function Rewiew() {
     </div>
   );
 }
+
+
+

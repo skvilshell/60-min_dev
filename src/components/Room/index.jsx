@@ -4,7 +4,7 @@ import preview from '../../assets/img/sec3_item.jpg'
 import { useState } from "react"
 import BtnPraimary from "../BtnPraimary/BtnPraimary"
 
-export default function Room({ title, comforts, price }) {
+export default function Room({ title, comforts, price, setActiveModal }) {
 
     const times = ["1 час", "3 часа", "Ночь", "Сутки"]
     const [showComforts, setShowComforts] = useState(true)
@@ -33,7 +33,7 @@ export default function Room({ title, comforts, price }) {
                         <div className={styles.rent}>
                             <h3 className={styles.price}>{price} ₽</h3>
                             <BtnPraimary
-                                Click={() => { console.log("hello") }}
+                                onClick={() => { setActiveModal(true) }}
                                 title={"Забронировать"} />
                         </div>
                     </>

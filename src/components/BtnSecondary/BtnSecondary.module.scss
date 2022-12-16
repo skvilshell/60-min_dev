@@ -7,13 +7,14 @@
    justify-content: center;
    align-items: center;
    @include v.regularNone;
-   background: v.$mainColor;
-   color: #fff;
+   color: v.$mainColor;
    border-radius: 15px;
    outline: none;
-   border: none;
+   border: 1px solid v.$mainColor;
+   
 
    &:hover {
-      background-color: v.$mainColorHover;
+      border: 1px solid v.$mainColorHover;
+      color: v.$mainColorHover;
    }
 }

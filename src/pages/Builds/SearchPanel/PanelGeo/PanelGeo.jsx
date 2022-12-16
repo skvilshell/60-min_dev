@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import s from './PanelGeo.module.scss'
 import { useDispatch, useSelector } from "react-redux"
-import { setGeo } from '../../../redux/slices/filter'
+import { setGeo } from '../../../../redux/slices/filter'
 
 
 

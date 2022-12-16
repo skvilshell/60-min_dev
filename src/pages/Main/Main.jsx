@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./s.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SearchPanel from "../../components/SearchPanel/SearchPanel";
 import { CardLarge, CardMedium } from "../../components/Skeletons";
 import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
@@ -8,25 +8,43 @@ import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
 import svgMap from "../../assets/img/map.svg";
 import svgStat from "../../assets/img/statistic.svg";
 import svgAllin from "../../assets/img/allin.svg";
-import Carusel from "../../components/Carusel/Carusel";
-import Rewiew from "../Review/Rewiew";
-import Cards from '../../assets/db/cards.json'
 import Card from '../../components/Card'
 import axios from 'axios'
+import { setMetro } from "../../redux/slices/metros";
+import { Link } from "react-router-dom";
+import { setGeo } from "../../redux/slices/filter";
+import { setDistrict } from "../../redux/slices/district";
 
 
 export default function Main() {
+  const dispatch = useDispatch()
 
-   const activeCity = useSelector(state => state.city.city)
+  const activeCity = useSelector(state => state.city.city)
+  const metros = useSelector(state => state.metro.metro)
+  const district = useSelector(state => state.district.district)
 
-   useEffect(() => {
-      fetch(`https://60-min.ru/hotel?city=${activeCity.name}`)
-         .then((res) => res.json())
-         .then((res) => console.log(res))
-   }, [activeCity])
+  const [cards, setCards] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: 'https://60-min.ru/getHotelsFiltered',
+      params: {
+        city: activeCity
+      }
+    }).then(res => {
+      setCards(res.data.properties1)
+      dispatch(setMetro(res.data.metros))
+      dispatch(setDistrict(res.data.districts.filter((i) => i.city === activeCity)))
+      console.log(district);
+    }).catch(e => console.log(e))
+
+    setLoading(true)
+  }, [activeCity])
 
   return (
-    <main className={s.root}>
+    <main id="search" className={s.root}>
       <section className={s.section__search}>
         <h1 align="center">
           подобрать отель на час <br /> в городе {activeCity.name}{" "}
@@ -45,26 +63,40 @@ export default function Main() {
               </h1>
               <h1 className={s.city}>{activeCity.name}</h1>
             </div>
-            <CardLarge />
+            {
+              loading
+                ?
+                <Card
+                  title={cards[0]?.title}
+                  position={cards[0]?.address}
+                  metro={`${metros[cards[0]?.metro_id]?.name || 'нет'}`}
+                  time={'от 2х'}
+                  price={"1000"}
+                  to={`/property/${cards[0]?.id}`}
+                />
+                : <CardLarge />
+            }
           </div>
         </div>
 
-            <div className={s.container}>
-               <div className={s.cards}>
-                  {
-                     Cards.map((item, index) =>
-                        <Card
-                           key={item.id}
-                           title={item.title}
-                           position={item.address}
-                           metro={`${item.metro_id}`}
-                           time={'от 2х'}
-                           price={"1000"}
-                        />)
-                  }
-               </div>
-
-          <BtnPraimary title={"подробнее"} />
+        <div className={s.container}>
+          <div className={s.cards}>
+            {
+              loading
+                ? cards.map((item) =>
+                  <Card
+                    key={item.id}
+                    title={item?.title}
+                    position={item?.address}
+                    metro={`${metros[item?.metro_id]?.name || 'нет'}`}
+                    time={'от 2х'}
+                    price={"1000"}
+                    to={`/property/${item?.id}`}
+                  />
+                )
+                : [...new Array(6)].map((_, i) => <CardMedium key={i} />)
+            }
+          </div>
         </div>
       </section>
 
@@ -149,9 +181,10 @@ export default function Main() {
           Чем больше срок аренды, тем меньше стоимость одного часа. Выгодно
           остаться на подольше!
         </p>
-        <BtnPraimary className="btn" title={"Подобрать решение для вас"} />
+        <a href="#search">
+          <BtnPraimary title={"Подобрать решение для вас"} />
+        </a>
       </section>
-      <Rewiew />
     </main>
   );
 }

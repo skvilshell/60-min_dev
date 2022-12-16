@@ -1,0 +1,67 @@
+@use "../../variables.scss" as v;
+
+body{
+   background: #EEEFF1;
+}
+
+
+.root{
+   background-color: white;
+   border-radius: 20px;
+   width: 470px;
+   margin:0 auto;
+   padding: 23px;
+   margin-top: 60px;
+
+   .title{
+      color: v.$textColor;
+      text-align: center;
+   }
+
+   .inputs{
+      margin: 0 auto;
+      width: 347px;
+      margin-top: 20px;
+      position: relative;
+
+      .forgot{
+         color: v.$secondDarkColor;
+         @include v.smallNone;
+         font-weight: 400;
+         cursor: pointer;
+         margin-top: 8px;
+         position: absolute;
+         right: 0;
+
+         &:hover{
+            border-bottom: 1px solid v.$secondDarkColor;
+         }
+      }
+
+      
+
+      label {
+         color: v.$textColor;
+         @include v.regularNone;
+         font-weight: 400;
+         user-select: none;
+         .memory{
+            margin-right: 9px;
+            transform:scale(1.2);
+            opacity:0.9;
+            cursor:pointer;
+            margin-top: 38px;
+         }
+      }
+   }
+
+   .buttons{
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      width: 347px;
+      margin-top: 20px;
+      justify-content: space-between;
+      height: 108px;
+   }
+}

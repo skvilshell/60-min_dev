@@ -6,21 +6,20 @@ import searchIcon from "../../assets/img/search_icon.svg"
 import PanelGeo from './PanelGeo/PanelGeo'
 import PanelCategories from './PanelCategoies/PanelCategories'
 import { useDispatch, useSelector } from 'react-redux'
-import { setTypeRental } from '../../redux/slices/filter'
+import { Link } from 'react-router-dom'
 
 
 
 export default function SearchPanel() {
    const categories = [
       {
-         title: useSelector(state => state.filter.typeRental.title),
+         title: useSelector(state => state.filter.typeRental.name),
          index: 1,
          child: {
             items: [
-               { title: "Квартиры", index: 1 },
-               { title: "Отели", index: 2 },
-               { title: "Загородные дома", index: 3 },
-               { title: "любое решение", index: 0 },
+               { name: "Квартиры", prop: 1, to: 'appartment' },
+               { name: "Отели", prop: 2, to: "hotel" },
+               { name: "Загородные дома", prop: 3, to: "house" },
             ],
             type: 0
          },
@@ -28,36 +27,33 @@ export default function SearchPanel() {
          type: 0
       },
       {
-         title: useSelector(state => state.filter.geo.title),
+         title: useSelector(state => state.filter.geo.name),
          index: 2,
          type: 1
       },
       {
-         title: useSelector(state => state.filter.timeRental.title),
+         title: useSelector(state => state.filter.timeRental.name),
          index: 3,
          child: {
             items: [
-               { title: "3-5 часов", index: 1 },
-               { title: "5-12 часов", index: 2 },
-               { title: "12-24 часов", index: 3 },
-               { title: "больше суток", index: 4 },
-               { title: "любое время", index: 0 },
+               { name: "3-5 часов", prop: "3-5 часов" },
+               { name: "5-12 часов", prop: "5-12 часов" },
+               { name: "12-24 часов", prop: "12-24 часов" },
+               { name: "больше суток", prop: "сутки и больше" },
             ],
             type: 1
          },
-
          type: 0
       },
       {
-         title: useSelector(state => state.filter.price.title),
+         title: useSelector(state => state.filter.price.name),
          index: 4,
          child: {
             items: [
-               { title: "до 1000", index: 1 },
-               { title: "до 1500", index: 2 },
-               { title: "до 2000", index: 3 },
-               { title: "от 3000", index: 4 },
-               { title: "любая цена", index: 0 },
+               { name: "до 1000", prop: 1001 },
+               { name: "до 1500", prop: 1501 },
+               { name: "до 2000", prop: 2001 },
+               { name: "от 3000", prop: 3001 },
             ],
             type: 2
          },
@@ -69,7 +65,13 @@ export default function SearchPanel() {
 
 
    const [currentActive, setCurrentActive] = useState(0)
-
+   const type = useSelector(s => s.filter.typeRental)
+   const price = useSelector(s => s.filter.price)
+   const geo = useSelector(s => s.filter.geo)
+   const rental = useSelector(s => s.filter.timeRental)
+   const geoTo = geo.id ? geo.type + "=" + geo.id : geo.type
+   console.log(geo.type)
+   const to = `/catalog/${type.to}?price=${price.prop}&${geoTo}&rental_hours_selected=${rental.prop}`
 
    return (
       <div className={s.wrapper}>
@@ -90,7 +92,9 @@ export default function SearchPanel() {
                <PanelCategories setActiveEl={setCurrentActive} obj={categories[3].child} />
             </BtnPanelList>
          </div>
-         <BtnPanel onClick={() => console.log(currentActive)} icon={searchIcon} ClassName={s.active} title={'search'} />
+         <Link to={to}>
+            <BtnPanel onClick={() => console.log(currentActive)} icon={searchIcon} ClassName={s.active} title={'search'} />
+         </Link>
       </div>
 
    )

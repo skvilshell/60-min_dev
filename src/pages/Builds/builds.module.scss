@@ -1,9 +1,13 @@
 @use '../../variables.scss' as v;
 
 .root {
-    width: 100%;
-    height: 100%;
-    padding: 3% 5%;
+    max-width: 1200px;
+    margin: 100px auto;
+
+    
+    .error{
+        margin-top: 100px;
+    }
 
     .builds__header {
         width: 100%;
@@ -14,7 +18,6 @@
             position: relative;
             cursor: pointer;
 
-            * {}
 
             .sort__label {
                 display: flex;
@@ -69,27 +72,19 @@
             color: #272727;
         }
 
-        .zaglushka {
-            background-color: #949494;
-            width: 523.83px;
-            height: 86px;
+        .search{
+            
         }
     }
 
     .facilitys {
         margin-top: 40px;
         display: grid;
-        grid-template-rows: repeat(2, 440px);
         grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
         gap: 40px;
     }
 
-    .zaglushka2 {
-        margin: 40px auto;
-        width: 614px;
-        height: 72px;
-        background-color: #949494;
-    }
 }
 
 @media (width<992px) {
@@ -120,7 +115,6 @@
 
         .facilitys {
             display: grid;
-            grid-template-rows: repeat(3, 380px);
             grid-template-columns: repeat(2, 1fr);
         }
     }
@@ -147,16 +141,11 @@
             grid-template-columns: repeat(2, 1fr);
         }
 
-        .zaglushka2 {
-            width: 275px;
-            height: 72px;
-        }
     }
 }
 
 @media (width<420px) {
     .facilitys {
         gap: 20px !important;
-        grid-template-rows: repeat(3, 211px) !important;
     }
 }

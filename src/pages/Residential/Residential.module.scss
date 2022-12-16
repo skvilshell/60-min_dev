@@ -1,12 +1,6 @@
 @use '../../variables.scss' as v;
 
-button {
-    @include v.regularNone;
-    border: none;
-    color: v.$secondDarkColor;
-    background-color: transparent;
-    cursor: pointer;
-}
+
 
 body {
     background: #EEEFF1;
@@ -16,6 +10,61 @@ body {
     width: 60%;
     margin-top: 10px;
     margin-left: 80px;
+
+
+    .modalbg {
+        position: fixed ;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0;
+        background: #00000056;
+        z-index: 8;
+        .modal {
+            position: fixed;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: v.$shadow;
+            background: #fff;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: min-content;
+            height: min-content;
+            margin: auto;
+            z-index: 10;
+            i{
+                font-size: 3rem;
+                position: absolute;
+                right: 25px;
+                top: 20px;
+                color: v.$textColor;
+                cursor: pointer;
+                user-select: none;
+            }
+
+            a {
+                h3 {
+                    color: v.$greenColor;
+                }
+
+                &:hover {
+                    h3 {
+                        color: v.$greenDarkColor;
+                    }
+                }
+            }
+        }
+    }
+
+    & .btnLook {
+        @include v.regularNone;
+        border: none;
+        color: v.$secondDarkColor;
+        background-color: transparent;
+        cursor: pointer;
+    }
 
     .view {
         display: flex;
@@ -34,23 +83,7 @@ body {
         }
     }
 
-    .path {
-        display: flex;
-        white-space: nowrap;
 
-        .path__text {
-            display: flex;
-            color: v.$secondDarkColor;
-
-            >* {
-                @include v.largeNone;
-            }
-
-            &>a:hover {
-                border-bottom: 1px solid;
-            }
-        }
-    }
 
     .title {
         margin-top: 10px;
@@ -228,6 +261,7 @@ body {
 
     .rooms {
         margin-top: 30px;
+        margin-bottom: 100px;
         border-radius: 20px;
         background-color: white;
         padding: 17px;
@@ -354,12 +388,12 @@ body {
 
                     &::before {
                         content: "";
-                        background: url("../../assets/img/number.svg") center / cover no-repeat;
+                        background: url("../../assets/img/number.jpg") center / contain no-repeat;
                         width: 20px;
                         height: 24px;
                         position: absolute;
                         left: 0;
-                        top: 0;
+                        top: -7px;
                     }
                 }
             }

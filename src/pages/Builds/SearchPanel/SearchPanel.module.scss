@@ -1,0 +1,27 @@
+@use "../../../variables.scss" as v;
+
+.wrapper {
+   display: flex;
+   align-items: center;
+   gap: 30px;
+
+   .root {
+      background: #a8a8a88f;
+      box-shadow: 0px -1px 4px rgba(217, 217, 217, 0.17), 0px 4px 4px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(4px);
+      border-radius: 20px;
+      cursor: pointer;
+      padding: 10px 18px;
+      position: relative;
+      display: flex;
+      gap: 20px;
+
+
+   }
+
+   .active {
+      background: v.$mainColor;
+      color: #EFEFEF;
+      border: none;
+   }
+}

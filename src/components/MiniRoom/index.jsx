@@ -4,7 +4,7 @@ import preview from '../../assets/img/preview.svg'
 import { useState } from "react";
 import BtnPraimary from "../BtnPraimary/BtnPraimary";
 
-export default function MiniRoom({ title, comforts, price }) {
+export default function MiniRoom({ title, comforts, price, setActiveModal }) {
     const times = ["1 час", "3 часа", "Ночь", "Сутки"]
     const [showComforts, setShowComforts] = useState(true)
 
@@ -19,7 +19,7 @@ export default function MiniRoom({ title, comforts, price }) {
                     <div className={styles.time} key={index} ><p>{item}</p></div>
                 ))}
             </div>
-            <div className={styles.comforts+" "+(showComforts&&styles.active)} onClick={() => { setShowComforts(!showComforts) }}>
+            <div className={styles.comforts + " " + (showComforts && styles.active)} onClick={() => { setShowComforts(!showComforts) }}>
 
                 {showComforts
                     ?
@@ -37,7 +37,7 @@ export default function MiniRoom({ title, comforts, price }) {
 
                 <BtnPraimary
                     title={"Забронировать"}
-                    Click={() => { }} />
+                    onClick={() => { setActiveModal(true) }} />
             </div>
         </div>)
 }

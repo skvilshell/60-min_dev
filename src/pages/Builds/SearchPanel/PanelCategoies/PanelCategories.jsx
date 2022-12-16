@@ -1,8 +1,9 @@
 import React from 'react'
-import BtnPanel from '../../BtnPanel/BtnPanel'
+import BtnPanel from '../../../../components/BtnPanel/BtnPanel'
 import s from './PanelCategories.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { setTypeRental, setTimeRental, setPrice } from '../../../redux/slices/filter'
+import { setTimeRental, setTypeRental, setPrice } from '../../../../redux/slices/filter'
+
 
 export default function PanelCategories({ obj, setActiveEl }) {
   const dispatch = useDispatch()

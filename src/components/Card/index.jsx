@@ -4,12 +4,13 @@ import style2 from './MiniCard.module.scss'
 import style3 from './SmallCard.module.scss'
 import preview from '../../assets/img/preview.svg'
 import BtnPraimary from "../BtnPraimary/BtnPraimary";
+import { Link } from "react-router-dom";
 
 
 
 
 
-export default function Card({ title, position, metro, time, price, size1 }) {
+export default function Card({ title, position, metro, time, price, size1, to }) {
     const styles = [style1, style2, style3]
     const size = size1 || 0
     return (
@@ -28,10 +29,12 @@ export default function Card({ title, position, metro, time, price, size1 }) {
             <div className={styles[size].price__button}>
                 <h3><span>от </span>{price}<span> руб</span></h3>
                 {
-                    size !== 2 && <BtnPraimary
-                        className={styles[size].btn}
-                        title={"подробнее"}
-                    />
+                    size !== 2 &&
+                    <Link to={to}>
+                        <BtnPraimary
+                            title={"подробнее"}
+                        />
+                    </Link>
                 }
             </div>
         </div>

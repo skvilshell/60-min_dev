@@ -3,16 +3,22 @@ import { createSlice } from "@reduxjs/toolkit"
 
 export const initialState = {
    geo: {
-      title: 'местоположение'
+      id: null,
+      name: "местоположение",
+      type: "metro_id",
    },
    typeRental: {
-      title: "тип аренды"
+      name: "тип аренды",
+      prop: null,
+      to: 'appartament'
    },
    timeRental: {
-      title: "время аренды"
+      name: "время аренды",
+      prop: null
    },
    price: {
-      title: "цена"
+      name: "цена",
+      prop: null
    }
 }
 
