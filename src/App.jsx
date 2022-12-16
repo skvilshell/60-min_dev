@@ -9,6 +9,8 @@ import Rewiew from "./pages/Review/Rewiew";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import MyAds from "./pages/MyAds";
+import AddEstate from "./pages/AddEstate/AddEstate";
+import AddEstate1 from "./pages/AddEstates/AddEstate";
 
 function App() {
   return (
@@ -23,9 +25,13 @@ function App() {
             <Route path="appartment" element={<Builds name="квартиры" type={2} />} />
             <Route path="house" element={<Builds name="дома" type={3} />} />
           </Route>
+          <Route path="property/add" element={<AddEstate />} />
+          <Route path="property/add321" element={<AddEstate1 />} />
+          <Route path="property/add" element={<AddEstate />} />
           <Route path="property/:id" element={<ObjectPage />} />
           <Route path="review" element={<Rewiew />} />
           <Route path="personal_account" element={<MyAds />} />
+
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

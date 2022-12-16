@@ -1,156 +1,136 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
 import styles from "./AddEstate.module.scss";
+import Tab from "./Tab/Tab";
+import InputWithTitle from "../../components/InputWithTitle";
+import AreaWithTitle from "../../components/areaWithTitle/AreaWithTitle";
+import Dropdown from "./dropdown/Dropdown";
 
 export default function AddEstate() {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     mode: "onBlur",
   });
 
-  async function onSubmit(data) {
-    console.log(data);
-    try {
-      await axios({
-        url: "https://60-min.ru/home/properties/addProperty",
-        headears: {
-          "Content-type": "application/json",
-        },
-        params: {
-          property: data,
-        },
-        method: "GET",
-      }).then(({ data }) => {
-        return data;
-      });
-    } catch (e) {
-      console.log("Sending error", e);
-    }
+  const [minTime, setMinTime] = useState({ name: "выберите значение" })
+  const [maxTime, setMaxTime] = useState({ name: "выберите значение" })
+
+
+  function onSubmit(data) {
+    // try {
+    //   axios({
+    //     url: "https://60-min.ru/home/properties/addProperty",
+    //     headears: {
+    //       "Content-type": "application/json",
+    //     },
+    //     params: {
+    //       property: data,
+    //     },
+    //     method: "post",
+    //   }).then((res) => {
+    //     console.log(res.data)
+    //   }).catch((e) => console.log(e))
+    // } catch (e) {
+    //   console.log("Sending error", e);
+    // }
+
+    console.log(data)
   }
   return (
-    <div>
-      <h1 className={styles.header}>Добавьте свой объект в каталог</h1>
+    <div className={styles.root}>
+      <h2 className={styles.header}>Добавьте свой объект в каталог</h2>
       <p className={styles.attention}>
         Все пункты в дальнейшем можно будет поменять
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {/*//*   оснновные сведения */}
         <div className={styles.container}>
-          <h1 className={styles.container__header}>Основные сведения</h1>
-          <form>
-            <div className={styles.property_type}>
-              <label className={styles.property_id}>
-                <div>Тип объекта</div>
-                <div>
-                  <label className={styles.property_label}>
-                    <input
-                      type="radio"
-                      value="1"
-                      className={styles.property_input}
-                      {...register("property_type_id", {
-                        required: "Это обязательное поле",
-                      })}
-                    />
-                    Отели
-                  </label>
-                  <label className={styles.property_label}>
-                    <input
-                      type="radio"
-                      value="2"
-                      className={styles.property_input}
-                      {...register("property_type_id", {
-                        required: "Это обязательное поле",
-                      })}
-                    />
-                    Аппартаменты
-                  </label>
-                  <label className={styles.property_label}>
-                    <input
-                      type="radio"
-                      value="3"
-                      className={styles.property_input}
-                      {...register("property_type_id", {
-                        required: "Это обязательное поле",
-                      })}
-                    />
-                    Дома
-                  </label>
-                </div>
-              </label>
+          <h3 className={styles.container__header}>Основные сведения</h3>
+          <p>Тип объекта</p>
+          <div className={styles.tabs}>
+            <Tab
+              title={"Отели"}
+              value={1}
+              id={"hotel"}
+              {...register("property_type_id", {
+                required: true,
+              })}
+            />
+            <Tab
+              title={"Аппартаменты"}
+              value={2}
+              id={"appartament"}
+              {...register("property_type_id", {
+                required: true,
+              })}
+            />
+            <Tab
+              title={"Дома"}
+              value={3}
+              id={"house"}
+              {...register("property_type_id", {
+                required: true,
+              })}
+            />
+          </div>
+          {errors?.property_type_id && <p className={styles.error}>выберите значение!</p>}
+
+          <div className={styles.object__textareas}>
+
+            <InputWithTitle
+              title={"название объекта"}
+              {...register("title", {
+                required: true
+              })}
+            />
+            {errors?.title && <p className={styles.error}>заполните поле</p>}
+            <AreaWithTitle
+              title={'описание объекта'}
+              {...register("description", {
+                required: true,
+              })}
+            />
+            {errors?.description && <p className={styles.error}>заполните поле</p>}
+            <InputWithTitle
+              title="Адресс"
+              type="address"
+              {...register("address", {
+                required: "Это обязательное поле",
+              })}
+            />
+          </div>
+          <div className={styles.select_time_elements}>
+            <p>На какое минимальное и максимальное время можно снять объект</p>
+
+            <div className={styles.select_time_elements}>
+              <div>
+                <p>min</p>
+                <Dropdown
+                  arr={arrHours}
+                  activeElement={minTime}
+                  setActiveElment={setMinTime}
+                />
+              </div>
+              <div>
+                <p>max</p>
+                <Dropdown
+                  arr={arrHours}
+                  activeElement={maxTime}
+                  setActiveElment={setMaxTime}
+                />
+              </div>
             </div>
 
-            <div className={styles.object__textareas}>
-              <label>
-                Название объекта
-                <textarea
-                  placeholder="Отель Plaza"
-                  {...register("title", { required: "Это обязательное поле" })}
-                />
-                <p className={styles.object__atention}>
-                  Оно будет отображаться на сайте (если у объекта нет названия,
-                  укажите адрес: улицу и дом)
-                </p>
-              </label>
-              <label>
-                Описание объекта
-                <textarea
-                  placeholder="В паре предложений опишите основные преимущества вашего объекта"
-                  {...register("description", {
-                    required: "Это обязательное поле",
-                  })}
-                />
-              </label>
-              <label>
-                Подробное описание объекта
-                <textarea
-                  placeholder="Подробно расскажите о своём объекте"
-                  {...register("description", {
-                    required: "Это обязательное поле",
-                  })}
-                />
-              </label>
-              <label>
-                Адрес объекта
-                <textarea
-                  placeholder="Введите полный адрес, начиная с города"
-                  {...register("address", {
-                    required: "Это обязательное поле",
-                  })}
-                />
-              </label>
-              <label>
-                На какое минимальное и максимальное время можно снять объект
-                <label>
-                  min
-                  {/* Требуется переделать */}
-                  <select>
-                    <option {...register("minimum", { required: true })}>
-                      2 часа
-                    </option>
-                  </select>
-                </label>
-                <label>
-                  max
-                  {/* Требуется переделать */}
-                  <select>
-                    <option {...register("minimum")}>2 суток</option>
-                  </select>
-                </label>
-                <p className={styles.attention}>
-                  Максимальное время можно не указывать
-                </p>
-              </label>
-            </div>
-          </form>
+            <p className={styles.attention}>
+              Максимальное время можно не указывать
+            </p>
+
+          </div>
         </div>
-
+        {/*//*   Особенности размещения */}
         <div className={styles.container}>
-          <h1 className={styles.container__header}>Особенности размещения</h1>
+          <h3 className={styles.container__header}>Особенности размещения</h3>
           <form>
             <label>
               Интернет
@@ -217,8 +197,9 @@ export default function AddEstate() {
             </label>
           </form>
         </div>
+        {/*//*   Услуги на территории */}
         <div className={styles.container}>
-          <h1 className={styles.container__header}>Услуги на территории</h1>
+          <h3 className={styles.container__header}>Услуги на территории</h3>
           <form>
             <label>
               Ресторан
@@ -286,8 +267,9 @@ export default function AddEstate() {
             </label>
           </form>
         </div>
+        {/*//*   Категории номеров */}
         <div className={styles.container}>
-          <h1 className={styles.header}>Категории номеров</h1>
+          <h3 className={styles.header}>Категории номеров</h3>
           <form>
             <label>
               Название категории
@@ -419,3 +401,17 @@ export default function AddEstate() {
     </div>
   );
 }
+
+
+
+const arrHours = [
+  { name: "3-5 часов", prop: "3-5 часов" },
+  { name: "5-12 часов", prop: "5-12 часов" },
+  { name: "12-24 часов", prop: "12-24 часов" },
+  { name: "больше суток", prop: "сутки и больше" },
+  { name: "больше суток", prop: "сутки и больше" },
+  { name: "больше суток", prop: "сутки и больше" },
+  { name: "больше суток", prop: "сутки и больше" },
+  { name: "больше суток", prop: "сутки и больше" },
+  { name: "больше суток", prop: "сутки и больше" },
+]

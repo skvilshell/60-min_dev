@@ -1,34 +1,39 @@
 @use "../../variables.scss" as v;
 
-input
-{
+input {
     padding: 0;
     margin: 0;
     border: 0;
     border: none;
 }
 
-.root{
+.root {
     color: v.$textColor;
     @include v.regularNone;
     font-weight: 400;
 
-    .title{
+    .title {
         margin-top: 10px;
     }
 
-    .input{
+    .input {
         width: 100%;
-        border-radius: 20px;
+        border-radius: 10px;
         height: 32px;
         margin-top: 5px;
         background: #EFEFEF;
         border: 2px solid rgba(180, 180, 180, 0.6);
         padding-left: 10px;
+        @include v.regularNone;
+        font-weight: bold;
+        transition: .2s ease all;
+        color: v.$mainColorHover;
 
-        &:focus{
-            outline:solid v.$mainColor;
-            border: 0px;
+        &:focus {
+            color: v.$textColor;
+            transition: .2s ease all;
+            outline: none;
+            border: solid 2px v.$mainColor;
         }
     }
 }

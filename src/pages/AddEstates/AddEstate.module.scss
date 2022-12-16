@@ -6,30 +6,9 @@
   margin: 100px auto;
   color: v.$textColor;
 
-  .error {
-    @include v.smallNone;
-    font-weight: bold;
-    margin: 5px;
-    color: red;
-    user-select: none;
-  }
-
-  .tabs {
+  .tabs{
     display: flex;
     gap: 20px;
-  }
-
-  .select_time_elements {
-    .select_time_elements {
-      display: flex;
-      gap: 40px;
-
-      >div {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-    }
   }
 
   .attention {
@@ -48,6 +27,20 @@
     padding: 30px;
     margin: 30px auto 100px auto;
 
+    textarea {
+      @include v.regularNone;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 750px;
+      height: 120px;
+      padding: 8px 0 0 15px;
+      background: #efefef;
+      border: 2px solid rgba(180, 180, 180, 0.6);
+      border-radius: 20px;
+      resize: none;
+      color: #6f6f6f;
+    }
 
 
 
