@@ -4,10 +4,37 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
 import BtnSuccess from "../BtnSuccess/BtnSucces";
 import Popup from "../Popup/Popup";
+import { useSelector } from "react-redux";
+
 
 export default function Header() {
+
+  const city = useSelector(state => state.city.city.name)
+
   let i = 0;
-  const navArr = ["главная", "отели", "квартиры", "экстрим", "партнерам"];
+  const navArr = [
+    {
+      title: "главная",
+      to: "/"
+    },
+    {
+      title: "отели",
+      to: `/catalog/hotel?city=${city}`
+    },
+    {
+      title: "квартиры",
+      to: `/catalog/appartment?city=${city}`
+    },
+    {
+      title: "экстрим",
+      to: `/catalog/house?city=${city}`
+    },
+    {
+      title: "партнерам",
+      to: `/catalog/partner`
+    }
+  ];
+
   const settings = [
     { showLocation: true, isAuth: false },
     { showLocation: false, isAuth: false },
@@ -25,8 +52,8 @@ export default function Header() {
       <ul className={styles.header__menu}>
         {navArr.map((item, index) => (
           <li key={index}>
-            <Link to="/">
-              <p>{item}</p>
+            <Link to={`${item.to}`}>
+              <p>{item.title}</p>
             </Link>
           </li>
         ))}
@@ -45,7 +72,9 @@ export default function Header() {
         </div>
       ) : (
         <div className={styles.header__container2}>
-          <BtnSuccess title="Войти" />
+          <Link to='/login'>
+            <BtnSuccess title="Войти" />
+          </Link>
           <div
             className={styles.addition}
             onClick={() => {

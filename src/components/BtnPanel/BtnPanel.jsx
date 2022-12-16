@@ -5,7 +5,8 @@ export default function BtnPanel({ title, Click, icon, ClassName }) {
 
    return (
       <div className={s.root + " " + ClassName} onClick={Click}>
-         {icon ? <img src={icon} alt="" /> : title
+         {
+            icon ? <img src={icon} alt="" /> : title
          }
 
       </div>

@@ -1,0 +1,92 @@
+@use '../../variables.scss' as v;
+
+.root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 285px;
+    border-radius: 20px;
+    margin: 15px auto;
+    box-shadow: v.$shadow-all;
+    padding-bottom: 10px;
+
+    .title {
+        margin: 10px 0;
+        color: v.$textColor;
+    }
+
+    .preview {
+        width: 100%;
+        border-radius: 20px;
+        object-fit: cover;
+    }
+
+    .times {
+        display: flex;
+        cursor: pointer;
+        margin: 9px;
+        gap: 4px;
+
+
+        .time {
+            @include v.smallNone;
+            color: v.$textColor;
+            border: 1px solid v.$secondDarkColor;
+            border-radius: 10px;
+            padding: 3px 8px;
+        }
+    }
+
+    .comforts {
+        display: grid;
+        padding: 8px;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        cursor: pointer;
+        gap: 10px;
+
+        .comfort {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 14px;
+            color: v.$textColor;
+            position: relative;
+            padding-left: 20px;
+            white-space: nowrap;
+
+
+            &::before {
+                content: "";
+                background: url("../../assets/img/mark.svg") center / contain no-repeat;
+                width: 14px;
+                height: 10px;
+                position: absolute;
+                left: 0;
+                top: 0px;
+            }
+        }
+    }
+
+    .rent {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 38px;
+
+        .price {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 32px;
+            color: v.$textColor;
+            margin-bottom: 7px;
+        }
+    }
+
+
+}

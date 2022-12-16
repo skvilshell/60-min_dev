@@ -1,91 +1,87 @@
 @use '../../variables.scss' as v;
 
 .root {
+    margin: 0 auto;
     width: 139px;
     height: 211px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     border-radius: 20px;
-    background-color: white;
+    box-shadow: v.$shadow;
+    background: #fff;
 
-    p {
-        color: v.$secondDarkColor;
-        @include v.largeNone;
-        font-size: 9.39429px;
-        line-height: 9px;
-    }
 
     .text {
-        padding: 4.51px 9px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 50%;
+        padding: 9px 5px;
 
         .container {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 60%
-        }
-    }
-
-    .title {
-        text-align: center;
-
-        >p {
-            font-weight: 700;
-            color: black;
-            font-size: 14.0914px;
-            line-height: 14px;
-        }
-    }
-
-    .position {
-        display: none;
-    }
-
-    .metro__time {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        align-items: center;
-        height: 60%;
-
-        >.metro {
-            display: flex;
             align-items: center;
-        }
+            gap: 5px;
 
-        >.time {
-            align-items: center;
-            display: flex;
-        }
-    }
+            * {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                @include v.tinyNone
+            }
 
-    #time {
-        width: 16%;
-        aspect-ratio: 1/1;
-    }
+            .title {
+                font-weight: 700;
+                color: v.$textColor;
+                @include v.smallNone
+            }
 
-    .price__button {
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
 
-        p {
-            font-weight: 400;
-            color: black;
-            font-size: 12px;
-            line-height: 12px;
+            .metro {
+                position: relative;
+                padding-left: 22px;
 
-            span {
-                @include v.smallNone;
+                &::before {
+                    content: '';
+                    background: url('../../assets/img/metro.svg') center/contain no-repeat;
+                    height: 13px;
+                    position: absolute;
+                    left: -3px;
+                    top: 0px;
+                    width: 26px;
+                }
+            }
+
+            .time {
+                position: relative;
+                padding-left: 22px;
+
+                &::before {
+                    content: '';
+                    background: url('../../assets/img/clock.svg') center/contain no-repeat;
+                    height: 12px;
+                    position: absolute;
+                    left: -3px;
+                    top: 0px;
+                    width: 26px;
+                }
             }
         }
+    }
 
-        button {
-            display: none;
+
+    .price__button {
+        margin-bottom: 10px;
+        padding: 0 15px;
+        align-items: center;
+        color: v.$textColor;
+
+        h3 {
+            @include v.smallNone;
+
+        }
+
+        h3 span {
+            @include v.tinyNone;
+            font-weight: normal;
         }
     }
 }

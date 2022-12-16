@@ -6,96 +6,105 @@
     height: 375px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     border-radius: 20px;
-    box-shadow: 3px 3px 10px black;
+    box-shadow: v.$shadow;
+    background: #fff;
 
-    p {
-        color: v.$secondDarkColor;
-        @include v.largeNone;
-        font-size: 14.0914px;
-        line-height: 14px;
-    }
 
     .text {
-        padding: 9px 20px;
+        padding: 9px 15px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 50%;
 
         .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 45%
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto 1fr 1fr;
+            gap: 9px;
+
+            * {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                @include v.smallNone
+            }
+
+            .title {
+                grid-column: 1/4;
+                font-weight: 700;
+                color: v.$textColor;
+                @include v.regularNone
+            }
+
+            .position {
+                grid-column: 1/4;
+                position: relative;
+                padding-left: 22px;
+
+                &::before {
+                    content: '';
+                    background: url('../../assets/img/location.svg') center/contain no-repeat;
+                    height: 18px;
+                    position: absolute;
+                    left: 0;
+                    top: 0px;
+                    width: 18px;
+                }
+            }
+
+            .metro {
+                grid-column: 1/3;
+                position: relative;
+                padding-left: 22px;
+
+                &::before {
+                    content: '';
+                    background: url('../../assets/img/metro.svg') center/contain no-repeat;
+                    height: 18px;
+                    position: absolute;
+                    left: -3px;
+                    top: 0px;
+                    width: 26px;
+                }
+            }
+
+            .time {
+                position: relative;
+                padding-left: 22px;
+                @include v.largeNone;
+
+                &::before {
+                    content: '';
+                    background: url('../../assets/img/clock.svg') center/contain no-repeat;
+                    height: 18px;
+                    position: absolute;
+                    left: -3px;
+                    top: 0px;
+                    width: 26px;
+                }
+            }
         }
     }
 
-    .title {
-        >p {
-            font-weight: 700;
-            color: black;
-            font-size: 14px;
-            line-height: 14px;
-        }
-    }
-
-    .position {
-        display: flex;
-
-        #position {
-            width: 6%;
-            aspect-ratio: 1/1;
-        }
-    }
-
-    .metro__time {
-        display: flex;
-
-        >.metro {
-            display: flex;
-        }
-
-        >.time {
-            display: flex;
-        }
-    }
-
-    #time {
-        width: 16%;
-        aspect-ratio: 1/1;
-    }
 
     .price__button {
-        display: flex;
-        justify-content: space-between;
+        margin-bottom: 20px;
+        padding: 0 15px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        align-items: center;
+        color: v.$textColor;
 
-        >p {
-            font-weight: 400;
-            color: black;
+        h3 {
+            @include v.largeNone;
+
         }
 
-        >button {
-            border: 0px;
-            background-color: v.$mainColor;
-            border-radius: 15px;
-            width: 112.27px;
-            height: 28.66px;
-            color: v.$white;
-            text-align: center;
-            cursor: pointer;
-
-            >p {
-                @include v.regularNone;
-                font-weight: 700;
-                color: v.$white;
-                font-size: 12.5257px;
-                line-height: 13px;
-            }
-
-            &:hover {
-                background-color: v.$mainColorHover;
-            }
+        h3 span {
+            @include v.smallNone;
+            font-weight: normal;
         }
     }
 }

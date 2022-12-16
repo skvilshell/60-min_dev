@@ -1,5 +1,9 @@
 @import url("./assets/fonts/fonts.scss");
 
+html {
+  scroll-behavior: smooth;
+}
+
 *,
 *::after,
 *::before {
@@ -8,7 +12,16 @@
   box-sizing: border-box;
 }
 
-*::selection{
+body {}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+*::selection {
   background: #6b9b6299;
 }
 

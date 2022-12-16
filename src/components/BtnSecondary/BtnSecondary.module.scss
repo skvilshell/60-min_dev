@@ -1,0 +1,20 @@
+@use "../../variables.scss" as v;
+
+.root {
+   user-select: none;
+   padding: 10px 27px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   @include v.regularNone;
+   color: v.$mainColor;
+   border-radius: 15px;
+   outline: none;
+   border: 1px solid v.$mainColor;
+   
+
+   &:hover {
+      border: 1px solid v.$mainColorHover;
+      color: v.$mainColorHover;
+   }
+}

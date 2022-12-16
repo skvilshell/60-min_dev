@@ -7,17 +7,18 @@ export default function RateBtn({ grades, rating }) {
   }
 
   return (
-    <>
+    <div className={styles.root}>
       {grades.map((grade) => (
-        <button
+        <label
           key={grade}
           value={grade}
           onClick={getRate}
           className={styles.rating}
         >
-          {grade}
-        </button>
+          <input type="radio" name="" className={styles.radio} />
+          <span>{grade}</span>
+        </label>
       ))}
-    </>
+    </div>
   );
 }

@@ -6,11 +6,16 @@ export default function BtnPanelList({ obj, children, activeEl, setActiveEl }) {
 
 
    return (
-      <div className={styles.root} onClick={() => setActiveEl(obj.index)}>
-         <div className={styles.wrapper + " " + ((activeEl === obj.index) && styles.active)} >
+      <div
+         className={styles.root}
+
+      >
+         <div
+            onClick={() => setActiveEl(prev => obj.index == prev ? 0 : obj.index)}
+            className={styles.wrapper + " " + ((activeEl === obj.index) && styles.active)} >
             <p className={styles.title} >
                {
-                  obj.title.split(" ").map((str, index) => (
+                  obj.title?.split(" ").map((str, index) => (
                      <span key={index}>{str} <br /> </span>
                   ))
                }

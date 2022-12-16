@@ -10,10 +10,10 @@
       justify-content: space-between;
       align-items: center;
       gap: 40px;
-      padding: 0 20px;
+      padding: 5px 20px;
       background: #EFEFEF;
       border-radius: 20px;
-      height: 60px;
+      min-height: 60px;
       transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) all;
 
       .title {

@@ -1,56 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import s from './PanelGeo.module.scss'
 import { useDispatch, useSelector } from "react-redux"
 import { setGeo } from '../../../redux/slices/filter'
 
-const elements = [
-   {
-      title: "купчино",
-   },
-   {
-      title: "звездная",
-   },
-   {
-      title: "московская",
-   },
-   {
-      title: "парк победы",
-   },
-   {
-      title: "электросила",
-   },
-   {
-      title: "московские ворота",
-   },
-   {
-      title: "фрунзенская",
-   },
-]
-const elements2 = [
-   {
-      title: "Адмиралтейский",
-   },
-   {
-      title: "Фрунзенский",
-   },
-   {
-      title: "Пушкинский",
-   },
-   {
-      title: "Центральный",
-   },
-   {
-      title: "ВО",
-   }
-]
+
+
+
 
 export default function PanelGeo({ setActiveEl, activeEl }) {
 
    const [variant, setVariant] = useState(0)
    const [active, setActive] = useState(false)
-   const [geoL, setGeoL] = useState("местоположение")
-   const [geoM, setGeoM] = useState("местоположение")
+   const [geoL, setGeoL] = useState({ name: "местоположение" })
+   const [geoM, setGeoM] = useState({ name: "местоположение" })
    const dispatch = useDispatch()
+   const metro = useSelector(state => state.metro.metro)
+   const district = useSelector(state => state.district.district)
+
+
+
+
+
 
    const arrow = (<svg className={active ? "" : s.active} width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -58,12 +28,20 @@ export default function PanelGeo({ setActiveEl, activeEl }) {
          fill="#3A3A3A" />
    </svg>)
 
+   const currentVariant = {
+      id: variant ? geoL.id : geoM.id,
+      name: variant ? geoL.name : geoM.name,
+      type: variant ? "district_id" : "metro_id",
+   }
+
+   const currentTitle = useSelector(state => state.filter.geo.name)
+
    return (
       <div className={s.root}>
          <div className={s.tab}>
             <div
                className={s.tab_element + " " + (!variant && s.active)}
-               onClick={() => setVariant(0)}
+               onClick={() => { setVariant(0) }}
             >
                Метро
             </div>
@@ -76,9 +54,8 @@ export default function PanelGeo({ setActiveEl, activeEl }) {
          </div>
          <div
             onClick={() => {
-               setActiveEl(1)
-               dispatch(setGeo({ title: `${variant ? geoL : geoM}` }))
-               console.log()
+               dispatch(setGeo(currentVariant))
+               setActiveEl(0)
             }}
             className={s.plus}
          >
@@ -89,22 +66,22 @@ export default function PanelGeo({ setActiveEl, activeEl }) {
                className={s.dropdown_btn}
                onClick={() => setActive(!active)}
             >
-               <p>{variant ? geoL : geoM}</p>
+               <p>{variant ? geoL.name : geoM.name}</p>
                {arrow}
             </div>
             {active && (
                <div className={s.dropdown_content}>
                   {
-                     (variant ? elements2 : elements).map((item, index) => (
+                     (variant ? district : metro).map((item) => (
                         <div
-                           key={index}
-                           className={s.dropdow_element + " " + (item.title === (variant ? geoL : geoM) && s.active)}
+                           key={item.id}
+                           className={s.dropdow_element + " " + ((item.name === (variant ? geoL : geoM) || (item.name === currentTitle)) && s.active)}
                            onClick={() => {
-                              variant ? setGeoL(item.title) : setGeoM(item.title)
+                              variant ? setGeoL(item) : setGeoM(item)
                               setActive(!active)
                            }}
                         >
-                           {item.title}
+                           {item.name}
                         </div>
                      ))
                   }

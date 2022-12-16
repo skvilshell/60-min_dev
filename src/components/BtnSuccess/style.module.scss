@@ -11,8 +11,10 @@
    padding: 10px 30px;
    outline: none;
    border: none;
+   user-select: none;
 
    &:hover {
       background: v.$greenDarkColor;
+      color: #fff;
    }
 }

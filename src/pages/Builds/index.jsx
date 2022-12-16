@@ -3,13 +3,17 @@ import styles from './builds.module.scss'
 import { useDispatch, useSelector } from "react-redux"
 import { setCityId } from '../../redux/slices/citysCategoriesSlice'
 import Card from "../../components/Card";
-import { Link } from "react-router-dom";
-import { CardLarge, CardMedium, CardSmall, CardSmallest } from "../Skeletons";
+import { Link, useSearchParams } from "react-router-dom";
+import { CardLarge, CardMedium, CardSmall, CardSmallest } from "../../components/Skeletons";
+import { useEffect } from "react";
+import axios from "axios";
+import { setMetro } from "../../redux/slices/metros";
+import SearchPanelMini from "./SearchPanel/SearchPanelMini";
 
 
-export default function Builds({ facility }) {
+export default function Builds({ name, type }) {
     var i = 0;
-    let dimension768 = false, dimension576 = false, load = false, dimension420 = false, dimension1000 = true;
+    let dimension768 = false, dimension576 = false, dimension420 = false, dimension1000 = true;
 
     if (window.innerWidth < 768 && window.innerWidth > 576) {
         i = 1;
@@ -27,50 +31,49 @@ export default function Builds({ facility }) {
         dimension1000 = false
     }
 
-    const premises = [
-        {
-            title: "SPB HOTEL",
-            position: "ул. Марата, д. 61, кв. 13 (в арку на что то там еще",
-            metro: "Владимирская", time: "от 2х часов", price: "1,000", size: i
-        },
-        {
-            title: "SPB HOTEL",
-            position: "ул. Марата, д. 61, кв. 13 (в арку на что то там еще",
-            metro: "Владимирская",
-            time: "от 2х часов",
-            price: "1,000",
-            size: i
-        },
-        {
-            title: "SPB HOTEL",
-            position: "ул. Марата, д. 61, кв. 13 (в арку на что то там еще",
-            metro: "Владимирская",
-            time: "от 2х часов",
-            price: "1,000",
-            size: i
-        },
-        {
-            title: "SPB HOTEL", position: "ул. Марата, д. 61, кв. 13 (в арку на что то там еще", metro: "Владимирская", time: "от 2х часов", price: "1,000", size: i
-        },
-        {
-            title: "SPB HOTEL", position: "ул. Марата, д. 61, кв. 13 (в арку на что то там еще", metro: "Владимирская", time: "от 2х часов", price: "1,000", size: i
-        },
-        {
-            title: "SPB HOTEL", position: "ул. Марата, д. 61, кв. 13 (в арку на что то там еще", metro: "Владимирская", time: "от 2х часов", price: "1,000", size: i
-        },
-    ]
+
 
     const dispatch = useDispatch()
     const activeSortItem = useSelector(state => state.city.city)
     const [activePopup, setActivePopup] = useState(false)
+    const [cards, setCards] = useState([])
+    const [load, setLoad] = useState(true)
+    const metros = useSelector(state => state.metro.metro)
+    const rental = useSelector(state => state.filter.typeRental)
+    const price = useSelector(state => state.filter.price)
+    const geo = useSelector(state => state.filter.geo)
+    const [searchParams, setSearchParams] = useSearchParams();
+
+
     const sortItem = [
         { name: "Санкт-Петербург", sortProperty: 'spb' },
         { name: "Москва", sortProperty: 'msk' },
         { name: "Сочи", sortProperty: 'sochi' },
     ]
+    useEffect(() => {
+
+        axios({
+            method: "get",
+            url: "https://60-min.ru/getHotelsFiltered",
+            params: {
+                city: searchParams.get("city"),
+                "type[]": type,
+                [geo.type]: searchParams.get(`${geo.type}`),
+                rental_hours_selected: searchParams.get('rental_hours_selected'),
+            }
+        }).then(res => res.data)
+            .then(data => {
+                console.log(data)
+                setCards(data?.properties1.concat(data?.properties2))
+                dispatch(setMetro(data?.metros))
+            })
+            .catch(e => { console.log(e) })
+        setLoad(false)
+    }, [type, activeSortItem])
 
     return (
         <div className={styles.root}>
+
             <div className={styles.builds__header}>
                 <div className={styles.container}>
                     <div className={styles.select}>
@@ -101,7 +104,7 @@ export default function Builds({ facility }) {
                             </div>
                         }
                     </div>
-                    <h1>{facility}</h1>
+                    <h1>{name}</h1>
                     {
                         dimension768 && <div className={styles.mainFacility}>
 
@@ -109,22 +112,26 @@ export default function Builds({ facility }) {
                                 ? <CardLarge />
                                 :
                                 <Card
-                                    title={premises[0].title}
-                                    position={premises[0].position}
-                                    metro={premises[0].metro}
-                                    time={premises[0].time}
-                                    price={premises[0].price}
-                                    size={0}
-                                    key={0}
+                                    title={cards[0]?.title}
+                                    position={cards[0]?.address}
+                                    metro={`${metros[cards[0]?.metro_id]?.name || 'нет'}`}
+                                    time={'от 2х'}
+                                    price={"1000"}
+                                    to={`/property/${cards[0]?.id}`}
+                                    size1={i}
                                 />
                             }
                         </div>
                     }
                 </div>
-                <div className={styles.zaglushka}></div>
+                <div className={styles.search}>
+                    <SearchPanelMini />
+                </div>
             </div>
+            {cards.length == 0 && (<h1 className={styles.error}>По таким фильтрам ничего не нашлось &#128543;</h1>)}
             <div className={styles.facilitys}>
-                {premises.map((premises, index) =>
+
+                {cards.map((item, index) =>
                     load
                         ? <div>
                             {dimension1000 && <CardLarge />}
@@ -135,27 +142,30 @@ export default function Builds({ facility }) {
                         :
                         dimension576
                             ?
-                            <Link to="/">
+                            <Link to={`/card/${item.id}`}>
                                 <Card
-                                    title={premises.title}
-                                    position={premises.position}
-                                    metro={premises.metro}
-                                    time={premises.time}
-                                    price={premises.price}
-                                    size={premises.size}
-                                    key={index} />
+                                    key={item?.id}
+                                    title={item?.title}
+                                    position={item?.address}
+                                    metro={`${metros[item?.metro_id]?.name || 'нет'}`}
+                                    time={'от 2х'}
+                                    price={"1000"}
+                                    to={`/property/${item.id}`}
+                                    size1={i}
+                                />
                             </Link>
                             :
                             <Card
-                                title={premises.title}
-                                position={premises.position}
-                                metro={premises.metro}
-                                time={premises.time}
-                                price={premises.price}
-                                size={premises.size}
-                                key={index} />)}
+                                key={item?.id}
+                                title={item?.title}
+                                position={item?.address}
+                                metro={`${metros[item?.metro_id]?.name || 'нет'}`}
+                                time={'от 2х'}
+                                price={"1000"}
+                                to={`/property/${item.id}`}
+                                size1={i}
+                            />)}
             </div>
-            <div className={styles.zaglushka2}></div>
         </div>
     )
 }

@@ -1,6 +1,7 @@
 @use "../../variables.scss" as v;
 
 .root {
+   user-select: none;
    padding: 10px 27px;
    display: flex;
    justify-content: center;

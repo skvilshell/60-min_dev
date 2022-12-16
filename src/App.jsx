@@ -1,25 +1,34 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import Builds from "./components/Builds";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Builds from "./pages/Builds";
 import NotFound from "./pages/404/NotFound";
-import Catalog from "./pages/Catalog/Catalog";
+import Layout from "./pages/Layout";
+import ObjectPage from "./pages/Residential";
 import Main from "./pages/Main/Main";
 import Rewiew from "./pages/Review/Rewiew";
+import SignIn from "./pages/SignIn/SignIn";
+import SignUp from "./pages/SignUp/SignUp";
+import MyAds from "./pages/MyAds";
 
 function App() {
   return (
     <div className="App">
-      <Header />
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/catalog" element={<Catalog />} />
-        <Route path="/b" element={<Builds />} />
-        <Route path="/*" element={<NotFound />} />
-        <Route path="/review" element={<Rewiew />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Main />} />
+          <Route path="login" element={<SignIn />} />
+          <Route path="register" element={<SignUp />} />
+          <Route path="catalog" >
+            <Route path="hotel" element={<Builds name="отели" type={1} />} />
+            <Route path="appartment" element={<Builds name="квартиры" type={2} />} />
+            <Route path="house" element={<Builds name="дома" type={3} />} />
+          </Route>
+          <Route path="property/:id" element={<ObjectPage />} />
+          <Route path="review" element={<Rewiew />} />
+          <Route path="personal_account" element={<MyAds />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
-      <Footer />
     </div>
   );
 }
