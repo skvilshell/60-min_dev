@@ -1,0 +1,61 @@
+@use "../../variables.scss" as v;
+
+.container {
+  box-sizing: border-box;
+  @include v.regularNone;
+  background: v.$white;
+  width: 70%;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px auto 100px auto;
+  label {
+    margin: 0 30px 0 0;
+  }
+  textarea {
+    @include v.regularNone;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 750px;
+    height: 120px;
+    padding: 8px 0 0 15px;
+    background: #efefef;
+    border: 2px solid rgba(180, 180, 180, 0.6);
+    border-radius: 20px;
+    resize: none;
+    color: #6f6f6f;
+  }
+  .property_label {
+    position: inherit;
+    display: inline-block;
+    text-align: center;
+
+    border: 1px solid #efefef;
+    background: rgba(239, 239, 239, 0.6);
+    padding: 8px 12px;
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    &:hover {
+      background: #cdcccc;
+    }
+  }
+  .property_input {
+    display: none;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+  }
+
+  .object__atention {
+    @include v.smallNone;
+    color: #6f6f6f;
+  }
+
+  .object_textareas {
+    label {
+      margin-bottom: 25px;
+    }
+  }
+}
