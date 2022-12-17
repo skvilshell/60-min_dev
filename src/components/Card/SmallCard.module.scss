@@ -1,0 +1,87 @@
+@use '../../variables.scss' as v;
+
+.root {
+    margin: 0 auto;
+    width: 139px;
+    height: 211px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+    box-shadow: v.$shadow;
+    background: #fff;
+
+
+    .text {
+        padding: 9px 5px;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+
+            * {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                @include v.tinyNone
+            }
+
+            .title {
+                font-weight: 700;
+                color: v.$textColor;
+                @include v.smallNone
+            }
+
+
+            .metro {
+                position: relative;
+                padding-left: 22px;
+
+                &::before {
+                    content: '';
+                    background: url('../../assets/img/metro.svg') center/contain no-repeat;
+                    height: 13px;
+                    position: absolute;
+                    left: -3px;
+                    top: 0px;
+                    width: 26px;
+                }
+            }
+
+            .time {
+                position: relative;
+                padding-left: 22px;
+
+                &::before {
+                    content: '';
+                    background: url('../../assets/img/clock.svg') center/contain no-repeat;
+                    height: 12px;
+                    position: absolute;
+                    left: -3px;
+                    top: 0px;
+                    width: 26px;
+                }
+            }
+        }
+    }
+
+
+    .price__button {
+        margin-bottom: 10px;
+        padding: 0 15px;
+        align-items: center;
+        color: v.$textColor;
+
+        h3 {
+            @include v.smallNone;
+
+        }
+
+        h3 span {
+            @include v.tinyNone;
+            font-weight: normal;
+        }
+    }
+}

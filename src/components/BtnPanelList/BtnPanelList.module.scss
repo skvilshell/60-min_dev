@@ -1,0 +1,45 @@
+@use "../../variables.scss" as v;
+
+.root {
+   position: relative;
+   z-index: 1;
+
+   .wrapper {
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      padding: 5px 20px;
+      background: #EFEFEF;
+      border-radius: 20px;
+      min-height: 60px;
+      transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+
+      .title {
+         @include v.regularNone;
+         color: v.$textColor;
+      }
+
+      .arrow {
+         transform: rotate(90deg);
+         width: 9.84px;
+         height: 6.68px;
+         transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+      }
+
+      &.active {
+         background: v.$mainColor;
+         transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+
+         p {
+            color: #EFEFEF;
+         }
+
+         .arrow {
+            transform: rotate(-90deg);
+            transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+         }
+      }
+   }
+}

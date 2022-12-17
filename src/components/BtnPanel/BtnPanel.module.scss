@@ -1,0 +1,14 @@
+@use "../../variables.scss" as v;
+
+.root {
+   padding: 0 20px;
+   height: 60px;
+   background: #EFEFEF;
+   border-radius: 20px;
+   border: 2px solid rgba(180, 180, 180, 0.6);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   @include v.regularNone;
+   color: v.$textColor;
+}

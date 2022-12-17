@@ -1,0 +1,42 @@
+@use '../../../../variables.scss' as v;
+
+.root {
+   position: absolute;
+   top: 135%;
+   left: 0;
+   padding: 15px;
+   background: #a8a8a88f;
+   box-shadow: 0px -1px 4px rgba(217, 217, 217, 0.17), 0px 4px 4px rgba(0, 0, 0, 0.25);
+   backdrop-filter: blur(4px);
+   /* Note: backdrop-filter has minimal browser support */
+   border-radius: 25px;
+   display: flex;
+   flex-wrap: nowrap;
+   gap: 20px;
+
+   .active {
+      background: v.$mainColor;
+      color: #fff;
+   }
+
+}
+
+.right {
+   position: absolute;
+   top: 135%;
+   right: 0;
+   padding: 15px;
+   background: #a8a8a88f;
+   box-shadow: 0px -1px 4px rgba(217, 217, 217, 0.17), 0px 4px 4px rgba(0, 0, 0, 0.25);
+   backdrop-filter: blur(4px);
+   /* Note: backdrop-filter has minimal browser support */
+   border-radius: 25px;
+   gap: 20px;
+   display: flex;
+   flex-wrap: nowrap;
+
+   .active {
+      background: v.$mainColor;
+      color: #fff;
+   }
+}

@@ -1,0 +1,93 @@
+@use "../../variables.scss" as v;
+
+.root {
+   margin: 0 auto;
+   width: 100%;
+   background-color: #3F3838;
+   
+
+   .footer__container1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0px 100px 0px 100px;
+
+      .footer__info {
+         display: flex;
+         width: 65%;
+         justify-content: space-between;
+         align-items: center;
+         margin: 20px 0px 20px 0px;
+
+         .logo {
+            height: 47px;
+            width: 173px;
+         }
+
+         .footer__menu {
+            display: flex;
+            gap: 30px;
+
+            .footer__button {
+               @include v.regularNone;
+               color: #FFFFFF;
+            }
+         }
+
+
+      }
+
+      .footer__actions {
+         display: flex;
+         flex-direction: column;
+         gap:5px;
+
+         .footer__button {
+            @include v.regularNone;
+            color: #FFFFFF;
+         }
+      }
+
+      
+   }
+   .footer__container2 {
+      @include v.tinyNone;
+      color: #FFFFFF;
+      text-align: center;
+   }
+
+}
+
+@media (width<1000px) {
+   .footer__container1 {
+      margin: 18px 12px;
+   }
+}
+
+@media (width<500px) {
+
+   .footer {
+      height: 180px;
+   }
+
+   .footer__container1 {
+      margin: 0px 12px;
+      display: block;
+      padding-top: 1px;
+   }
+
+   .footer__info {
+      width: 100%;
+   }
+
+   .footer__menu {
+      flex-direction: column;
+      align-items: end;
+      height: 60px;
+   }
+
+   .footer__actions {
+      flex-direction: row;
+      margin-top: 20px;
+   }
+}

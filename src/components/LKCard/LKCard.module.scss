@@ -1,0 +1,31 @@
+@use '../../variables.scss' as v;
+
+.root {
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    gap: 20px;
+    padding: 20px;
+    justify-content: space-between;
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .title {
+            color: v.$textColor;
+        }
+    }
+
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        
+    }
+}

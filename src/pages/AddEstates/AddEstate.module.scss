@@ -1,0 +1,58 @@
+@use "../../variables.scss" as v;
+
+
+.root {
+  max-width: 1200px;
+  margin: 100px auto;
+  color: v.$textColor;
+
+  .tabs{
+    display: flex;
+    gap: 20px;
+  }
+
+  .attention {
+    margin-top: 10px;
+    padding-left: 20px;
+    background: url("../../assets/img/i.svg") left/contain no-repeat;
+    @include v.smallTight;
+    color: #6f6f6f;
+  }
+
+  .container {
+    box-sizing: border-box;
+    @include v.regularNone;
+    background: v.$white;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px auto 100px auto;
+
+    textarea {
+      @include v.regularNone;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 750px;
+      height: 120px;
+      padding: 8px 0 0 15px;
+      background: #efefef;
+      border: 2px solid rgba(180, 180, 180, 0.6);
+      border-radius: 20px;
+      resize: none;
+      color: #6f6f6f;
+    }
+
+
+
+    .object__atention {
+      @include v.smallNone;
+      color: #6f6f6f;
+    }
+
+    .object_textareas {
+      label {
+        margin-bottom: 25px;
+      }
+    }
+  }
+}
