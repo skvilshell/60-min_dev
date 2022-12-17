@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import styles from "./Residential.module.scss"
 import iconLocation from '../../assets/img/location.svg'
-import star from '../../assets/img/star.svg'
+import star from '../../assets/img/Star.svg'
 import { useState } from "react";
 import Reviews__score from "../../components/Reviews__score/index";
 import Comment from "../../components/Comment";
