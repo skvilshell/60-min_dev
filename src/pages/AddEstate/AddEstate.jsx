@@ -18,7 +18,6 @@ export default function AddEstate() {
 
 
   function onSubmit(data) {
-    // try {
     //   axios({
     //     url: "https://60-min.ru/home/properties/addProperty",
     //     headears: {
@@ -31,9 +30,6 @@ export default function AddEstate() {
     //   }).then((res) => {
     //     console.log(res.data)
     //   }).catch((e) => console.log(e))
-    // } catch (e) {
-    //   console.log("Sending error", e);
-    // }
 
     console.log(data)
   }
@@ -131,71 +127,76 @@ export default function AddEstate() {
         {/*//*   Особенности размещения */}
         <div className={styles.container}>
           <h3 className={styles.container__header}>Особенности размещения</h3>
-          <form>
+
+
+          <div className={styles.feature}>
+            <div className={styles.feature_item}>
+              <p>Интернет</p>
+            </div>
+          </div>
+          <label>
+            Интернет
+            {/* Требуется переделать */}
+            <select>
+              <option
+                {...register("Internet", {
+                  required: "Это обязательное поле",
+                })}
+              >
+                Есть, бесплатно
+              </option>
+            </select>
+          </label>
+          <label>
+            Парковка
+            {/* Требуется переделать */}
+            <select>
+              <option
+                {...register("Parking", {
+                  required: "Это обязательное поле",
+                })}
+              >
+                Есть, бесплатно
+              </option>
+            </select>
+          </label>
+          <label>
+            Оплата
+            {/* Требуется переделать */}
+            <select>
+              <option {...register("price_cat")}>Только карты </option>
+            </select>
+          </label>
+          <label>
+            Доступность с животными
+            {/* Требуется переделать */}
+            <select>
+              <option {...register("pets")}>Можно с доплатой</option>
+            </select>
+          </label>
+          <label>
+            Время заезда и отъезда
+            {/* Требуется переделать */}
             <label>
-              Интернет
-              {/* Требуется переделать */}
+              заезд после
               <select>
-                <option
-                  {...register("Internet", {
-                    required: "Это обязательное поле",
-                  })}
-                >
-                  Есть, бесплатно
-                </option>
+                <option {...register("entry")}>12:00</option>
               </select>
             </label>
             <label>
-              Парковка
-              {/* Требуется переделать */}
+              отъезд до
               <select>
-                <option
-                  {...register("Parking", {
-                    required: "Это обязательное поле",
-                  })}
-                >
-                  Есть, бесплатно
-                </option>
+                <option {...register("exit")}>13:00</option>
               </select>
             </label>
-            <label>
-              Оплата
-              {/* Требуется переделать */}
-              <select>
-                <option {...register("price_cat")}>Только карты </option>
-              </select>
-            </label>
-            <label>
-              Доступность с животными
-              {/* Требуется переделать */}
-              <select>
-                <option {...register("pets")}>Можно с доплатой</option>
-              </select>
-            </label>
-            <label>
-              Время заезда и отъезда
-              {/* Требуется переделать */}
-              <label>
-                заезд после
-                <select>
-                  <option {...register("entry")}>12:00</option>
-                </select>
-              </label>
-              <label>
-                отъезд до
-                <select>
-                  <option {...register("exit")}>13:00</option>
-                </select>
-              </label>
-            </label>
-            <label>
-              Курение на территории
-              {/* Требуется переделать */}
-              <select>
-                <option {...register("smoking")}>Разрешено</option>
-              </select>
-            </label>
-          </form>
+          </label>
+          <label>
+            Курение на территории
+            {/* Требуется переделать */}
+            <select>
+              <option {...register("smoking")}>Разрешено</option>
+            </select>
+          </label>
         </div>
         {/*//*   Услуги на территории */}
         <div className={styles.container}>
@@ -409,9 +410,16 @@ const arrHours = [
   { name: "5-12 часов", prop: "5-12 часов" },
   { name: "12-24 часов", prop: "12-24 часов" },
   { name: "больше суток", prop: "сутки и больше" },
-  { name: "больше суток", prop: "сутки и больше" },
-  { name: "больше суток", prop: "сутки и больше" },
-  { name: "больше суток", prop: "сутки и больше" },
-  { name: "больше суток", prop: "сутки и больше" },
-  { name: "больше суток", prop: "сутки и больше" },
+]
+
+const arrFeatureCategory = [
+  { name: "нет", prop: "нет" },
+  { name: "есть, платно", prop: "есть, платно" },
+  { name: "есть, бесплатно", prop: "есть, платно" },
+]
+
+const arrPayCategory = [
+  { name: "только карта", prop: "только карта" },
+  { name: "только наличные", prop: "только наличные" },
+  { name: "наличные и карта", prop: "наличные и карта" },
 ]
