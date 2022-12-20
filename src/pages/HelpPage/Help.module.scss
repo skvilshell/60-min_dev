@@ -1,0 +1,44 @@
+@use "../../variables.scss" as v;
+
+.root {
+  width: 675px;
+  height: 555px;
+  padding: 30px;
+  margin: 60px auto 80px auto;
+
+  background: #ffffff;
+  border-radius: 20px;
+
+  .info {
+    display: flex;
+    margin: 40px 0 35px 0;
+
+    .logo {
+      margin-right: 35px;
+    }
+  }
+  .span {
+    color: red;
+  }
+  .area {
+    width: 600px;
+    height: 160px;
+    padding: 10px;
+    margin-bottom: 40px;
+    background: #efefef;
+    border: 2px solid #b4b4b499;
+    border-radius: 10px;
+    resize: none;
+    @include v.regularNone;
+    font-weight: bold;
+    transition: 0.2s ease all;
+    color: v.$mainColorHover;
+
+    &:focus {
+      color: v.$textColor;
+      transition: 0.2s ease all;
+      outline: none;
+      border: solid 2px v.$mainColor;
+    }
+  }
+}

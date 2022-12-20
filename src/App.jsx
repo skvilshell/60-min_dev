@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import MyAds from "./pages/MyAds";
 import AddEstate from "./pages/AddEstate/AddEstate";
 import AddEstate1 from "./pages/AddEstates/AddEstate";
+import Help from "./pages/HelpPage/Help";
 
 function App() {
   return (
@@ -18,11 +19,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
+          <Route path="help" element={<Help />} />
           <Route path="login" element={<SignIn />} />
           <Route path="register" element={<SignUp />} />
-          <Route path="catalog" >
+          <Route path="catalog">
             <Route path="hotel" element={<Builds name="отели" type={1} />} />
-            <Route path="appartment" element={<Builds name="квартиры" type={2} />} />
+            <Route
+              path="appartment"
+              element={<Builds name="квартиры" type={2} />}
+            />
             <Route path="house" element={<Builds name="дома" type={3} />} />
           </Route>
           <Route path="property/add" element={<AddEstate />} />
