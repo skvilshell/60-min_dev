@@ -3,6 +3,7 @@ import LKCard from '../../components/LKCard'
 import styles from './MyAds.module.scss'
 import BtnPraimary from '../../components/BtnPraimary/BtnPraimary'
 import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 
 export default function MyAds() {
     const ads = ["Отель", "Отель", "Отель", "Отель", "Отель", "Отель"]
@@ -13,11 +14,19 @@ export default function MyAds() {
 
     return (
         <div className={styles.root}>
-            <div className={styles.ads}>
-                {ads.map((item, index) => (
-                    <LKCard key={index} title={item} />
-                ))}
-            </div>
+
+            <Routes>
+                <Route path='ads' element=
+                    {<div className={styles.ads}>
+                        {ads.map((item, index) => (
+                            <LKCard key={index} title={item} />
+                        ))}
+                    </div>} />
+                <Route path='change-password' element={<p>change-password</p>} />
+                <Route path='subscription' element={<p>subscription</p>} />
+                <Route path='support' element={<p>support</p>} />
+            </Routes>
+
             <div className={styles.info}>
                 <div className={styles.container}>
                     <h3>Личный кабинет</h3>
