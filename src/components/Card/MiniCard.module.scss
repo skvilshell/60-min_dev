@@ -96,6 +96,7 @@
         grid-template-columns: 50% 50%;
         align-items: center;
         color: v.$textColor;
+        position:relative;
 
         h3 {
             @include v.largeNone;
@@ -105,6 +106,11 @@
         h3 span {
             @include v.smallNone;
             font-weight: normal;
+        }
+
+        >div{
+            position: absolute;
+            right: 5px;
         }
     }
 }

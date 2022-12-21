@@ -39,7 +39,7 @@ export default function SearchPanel() {
                { name: "3-5 часов", prop: "3-5 часов" },
                { name: "5-12 часов", prop: "5-12 часов" },
                { name: "12-24 часов", prop: "12-24 часов" },
-               { name: "больше суток", prop: "сутки и больше" },
+               { name: "Больше суток", prop: "сутки и больше" },
             ],
             type: 1
          },
@@ -91,10 +91,11 @@ export default function SearchPanel() {
             <BtnPanelList activeEl={currentActive} setActiveEl={setCurrentActive} obj={categories[3]} >
                <PanelCategories setActiveEl={setCurrentActive} obj={categories[3].child} />
             </BtnPanelList>
+
+            <Link to={to}>
+               <BtnPanel onClick={() => console.log(currentActive)} icon={searchIcon} ClassName={s.active} title={'search'} />
+            </Link>
          </div>
-         <Link to={to}>
-            <BtnPanel onClick={() => console.log(currentActive)} icon={searchIcon} ClassName={s.active} title={'search'} />
-         </Link>
       </div>
 
    )

@@ -2,8 +2,7 @@
 
 .review {
   box-sizing: border-box;
-  @include v.regularNone;
-  background: v.$white;
+  background: #ffffff;
   width: 70%;
   border-radius: 20px;
   padding: 30px;
@@ -16,60 +15,41 @@
   }
 
   .list_rate {
-    display: flex;
-    flex-direction: column;
-    .rate_item {
-      margin: 15px 0 25px 0;
-    }
-    .rate__label {
-      position: inherit;
-      display: inline-block;
-      text-align: center;
+    list-style: none;
 
-      border: 1px solid #efefef;
-      background: rgba(239, 239, 239, 0.6);
-      width: 70px;
-      height: 30px;
+    .li_item {
+      margin: 25px 0;
 
-      cursor: pointer;
-
-      &:hover {
-        background: #cdcccc;
+      label {
+        display: inline-block;
+        margin-bottom: 15px;
       }
 
-      &:first-child {
-        border-radius: 20px 0 0 20px;
+      .grades {
+        button:first-child {
+          border-radius: 20px 0 0 20px;
+        }
+        button:last-child {
+          border-radius: 0 20px 20px 0;
+        }
+        button:hover {
+          background: #cdcccc;
+          transition: 0.25s;
+        }
       }
-      &:last-child {
-        border-radius: 0 20px 20px 0;
-      }
-    }
-    .rate__input {
-      display: none;
-      position: absolute;
-      z-index: 0;
-      left: 0;
-    }
-    .btn_priamary {
-      width: 200px;
     }
   }
 
   .textArea_container {
-    margin-bottom: 40px;
     p {
       margin-bottom: 15px;
     }
     textarea {
-      @include v.regularNone;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 750px;
+      width: 85%;
       height: 120px;
-      padding: 8px 0 0 15px;
-      background: #efefef;
-      border: 2px solid rgba(180, 180, 180, 0.6);
+      padding: 8px 15px;
+      background: #b4b4b499;
+      border: #efefef;
       border-radius: 20px;
       resize: none;
       color: #6f6f6f;
@@ -77,11 +57,25 @@
     .textArea_Dignity {
       margin-bottom: 25px;
     }
+    .textArea_Limitation {
+      margin-bottom: 40px;
+    }
   }
 }
 
 @media screen and (max-width: 820px) {
   .review {
+    font-size: 16px;
+    padding: 20px;
+    align-content: center;
+    width: 90%;
+    .grades {
+      width: 100%;
+      button {
+        width: 20%;
+        padding: 15px 20px;
+      }
+    }
     .textArea_container {
       textarea {
         width: 100%;
@@ -90,35 +84,23 @@
     }
   }
 }
-@media screen and (max-width: 541px) {
+
+@media screen and (max-width: 361px) {
   .review {
-    .list_rate {
-      .rate__label {
-        width: 60px;
-        height: 30px;
+    padding: 15px;
+    .grades {
+      button {
+        padding: 10px 10px;
       }
     }
   }
 }
 
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 280px) {
   .review {
-    .list_rate {
-      .rate__label {
-        width: 40px;
-        height: 30px;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 281px) {
-  .review {
-    .list_rate {
-      width: 100%;
-      .rate__label {
-        width: 20%;
-        height: 30px;
+    .grades {
+      button {
+        padding: 15px 10px;
       }
     }
   }

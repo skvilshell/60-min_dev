@@ -46,11 +46,6 @@
                 margin-left: 9.85px;
             }
 
-            .links{
-                display: grid;
-                grid-template-columns: 1fr
-            }
-
             .container__button {
                 @include v.largeNone;
                 color: v.$textColor;

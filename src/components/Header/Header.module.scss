@@ -6,7 +6,7 @@
    background: #3f3838;
    display: flex;
    padding: 17px 16px;
-   justify-content: space-between;
+   justify-content:space-between;
    align-items: center;
 
    * {
@@ -36,10 +36,6 @@
       gap: 23px;
       list-style: none;
       color: #FFFFFF;
-
-      li:hover {
-         color: rgb(192, 192, 192);
-      }
    }
 
 

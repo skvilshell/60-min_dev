@@ -6,10 +6,7 @@ export default function BtnPanelList({ obj, children, activeEl, setActiveEl }) {
 
 
    return (
-      <div
-         className={styles.root}
-
-      >
+      <div className={styles.root}>
          <div
             onClick={() => setActiveEl(prev => obj.index == prev ? 0 : obj.index)}
             className={styles.wrapper + " " + ((activeEl === obj.index) && styles.active)} >

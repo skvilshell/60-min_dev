@@ -40,3 +40,9 @@
       color: #fff;
    }
 }
+
+@media (width<768px){
+   .root {
+      top:115%
+   }
+}
