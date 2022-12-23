@@ -11,19 +11,19 @@ export default function MyAds() {
     const btnTitle = [
         {
             text: "Мои объявления",
-            to: "/personal_account/ads"
+            to: "/account/properties"
         },
         {
             text: "Смена пароля",
-            to: "/personal_account/change-password"
+            to: "/account/change-password"
         },
         {
             text: "Ваша подписка",
-            to: "/personal_account/subscription"
+            to: "/account/subscription"
         },
         {
             text: "Тех. поддержка",
-            to: "/personal_account/support"
+            to: "/account/support"
         }
     ]
     const [btnActive, setBtnActive] = useState(-1)

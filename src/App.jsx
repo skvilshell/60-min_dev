@@ -12,7 +12,8 @@ import MyAds from "./pages/MyAds";
 import AddEstate from "./pages/AddEstate/AddEstate";
 import AddEstate1 from "./pages/AddEstates/AddEstate";
 import CardsOutlet from "./pages/MyAds/CardsOutlet";
-import Support from "./pages/SupportPage/Support";
+import Support from "./pages/MyAds/SupportPage/Support";
+import CommentPage from "./pages/MyAds/CommentPage/CommentPage";
 
 function App() {
   return (
@@ -35,8 +36,10 @@ function App() {
           <Route path="property/add" element={<AddEstate />} />
           <Route path="property/:id" element={<ObjectPage />} />
           <Route path="review" element={<Rewiew />} />
-          <Route path="personal_account" element={<MyAds />}>
-            <Route path="ads" element={<CardsOutlet />} />
+          <Route path="account" element={<MyAds />}>
+            <Route path="properties" element={<CardsOutlet />} />
+            <Route path="update/:id" element={<h1>карточка</h1>} />
+            <Route path="review/:id" element={<CommentPage />} />
             <Route path="change-password" element={<p>change-password</p>} />
             <Route path="subscription" element={<p>subscription</p>} />
             <Route path="support" element={<Support />} />
