@@ -1,6 +1,7 @@
 @use "../../variables.scss" as v;
 
 .root {
+   position: relative;
    padding: 0 20px;
    height: 60px;
    background: #EFEFEF;

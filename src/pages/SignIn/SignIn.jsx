@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputWithTitle from "../../components/InputWithTitle";
 import styles from "./s.module.scss"
 import BtnSecondary from "../../components/BtnSecondary";
+import { Link } from "react-router-dom"
 import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";

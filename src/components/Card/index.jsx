@@ -30,11 +30,13 @@ export default function Card({ title, position, metro, time, price, size1, to })
                 <h3><span>от </span>{price}<span> руб</span></h3>
                 {
                     size !== 2 &&
-                    <Link to={to}>
-                        <BtnPraimary
-                            title={"подробнее"}
-                        />
-                    </Link>
+                    <div>
+                        <Link to={to}>
+                            <BtnPraimary
+                                title={"подробнее"}
+                            />
+                        </Link>
+                    </div>
                 }
             </div>
         </div>

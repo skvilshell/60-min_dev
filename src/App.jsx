@@ -9,9 +9,6 @@ import Rewiew from "./pages/Review/Rewiew";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import MyAds from "./pages/MyAds";
-import AddEstate from "./pages/AddEstate/AddEstate";
-import AddEstate1 from "./pages/AddEstates/AddEstate";
-import CardsOutlet from "./pages/MyAds/CardsOutlet";
 
 function App() {
   return (
@@ -26,18 +23,9 @@ function App() {
             <Route path="appartment" element={<Builds name="квартиры" type={2} />} />
             <Route path="house" element={<Builds name="дома" type={3} />} />
           </Route>
-          <Route path="property/add" element={<AddEstate />} />
-          <Route path="property/add321" element={<AddEstate1 />} />
-          <Route path="property/add" element={<AddEstate />} />
           <Route path="property/:id" element={<ObjectPage />} />
           <Route path="review" element={<Rewiew />} />
-          <Route path="personal_account" element={<MyAds />} >
-            <Route path='ads' element={<CardsOutlet />} />
-            <Route path='change-password' element={<p>change-password</p>} />
-            <Route path='subscription' element={<p>subscription</p>} />
-            <Route path='support' element={<p>support</p>} />
-          </Route>
-
+          <Route path="personal_account" element={<MyAds />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
