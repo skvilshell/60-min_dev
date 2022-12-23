@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SearchPanel from "../../components/SearchPanel/SearchPanel";
 import { CardLarge, CardMedium } from "../../components/Skeletons";
 import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
+import MapSearch from "../../components/MapSearch/MapSearch";
 
 import svgMap from "../../assets/img/map.svg";
 import svgStat from "../../assets/img/statistic.svg";

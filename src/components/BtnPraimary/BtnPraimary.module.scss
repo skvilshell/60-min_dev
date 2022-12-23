@@ -1,19 +1,26 @@
 @use "../../variables.scss" as v;
 
 .root {
-   user-select: none;
-   padding: 10px 27px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   @include v.regularNone;
-   background: v.$mainColor;
-   color: #fff;
-   border-radius: 15px;
-   outline: none;
-   border: none;
+  user-select: none;
+  padding: 10px 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include v.regularNone;
+  background: v.$mainColor;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 15px;
+  outline: none;
+  border: none;
 
-   &:hover {
-      background-color: v.$mainColorHover;
-   }
+  &:hover {
+    background-color: v.$mainColorHover;
+  }
+
+  &:disabled {
+    background-color: v.$secondDarkColor;
+    transition: 0.25s;
+    cursor: not-allowed;
+  }
 }

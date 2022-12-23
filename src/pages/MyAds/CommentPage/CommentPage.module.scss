@@ -1,0 +1,18 @@
+@use "../../../variables.scss" as v;
+
+.root {
+   padding: 40px;
+   border-radius: 20px;
+   width: 90%;
+   background: #fff;
+
+   >*+* {
+      margin-top: 40px;
+   }
+
+   .comments {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px; 
+   }
+}
