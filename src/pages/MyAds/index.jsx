@@ -8,7 +8,24 @@ export default function MyAds() {
     const ads = ["Отель", "Отель", "Отель", "Отель", "Отель", "Отель"]
     const title = "Стандарт"
     const date = "25.08.2022"
-    const btnTitle = ["Мои объявления", "Смена пароля", "Ваша подписка", "Тех. поддержка"]
+    const btnTitle = [
+        {
+            text: "Мои объявления",
+            to: "/account/properties"
+        },
+        {
+            text: "Смена пароля",
+            to: "/account/change-password"
+        },
+        {
+            text: "Ваша подписка",
+            to: "/account/subscription"
+        },
+        {
+            text: "Тех. поддержка",
+            to: "/account/support"
+        }
+    ]
     const [btnActive, setBtnActive] = useState(-1)
 
     return (
