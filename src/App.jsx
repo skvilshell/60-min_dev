@@ -23,17 +23,11 @@ function App() {
           <Route index element={<Main />} />
           <Route path="login" element={<SignIn />} />
           <Route path="register" element={<SignUp />} />
-          <Route path="catalog">
+          <Route path="catalog" >
             <Route path="hotel" element={<Builds name="отели" type={1} />} />
-            <Route
-              path="appartment"
-              element={<Builds name="квартиры" type={2} />}
-            />
+            <Route path="appartment" element={<Builds name="квартиры" type={2} />} />
             <Route path="house" element={<Builds name="дома" type={3} />} />
           </Route>
-          <Route path="property/add" element={<AddEstate />} />
-          <Route path="property/add321" element={<AddEstate1 />} />
-          <Route path="property/add" element={<AddEstate />} />
           <Route path="property/:id" element={<ObjectPage />} />
           <Route path="review" element={<Rewiew />} />
           <Route path="account" element={<MyAds />}>
@@ -44,6 +38,7 @@ function App() {
             <Route path="subscription" element={<p>subscription</p>} />
             <Route path="support" element={<Support />} />
           </Route>
+
 
           <Route path="*" element={<NotFound />} />
         </Route>

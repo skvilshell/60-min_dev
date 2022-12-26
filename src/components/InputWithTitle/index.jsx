@@ -1,9 +1,7 @@
 import React from "react";
 import styles from "./InputWithTitle.module.scss"
 
-
 const InputWithTitle = React.forwardRef(({ title, onChange, onBlur, name, ...props }, ref) => (
-
     <div className={styles.root}  >
         <p className={styles.title}>{title}</p>
         <input
@@ -17,6 +15,9 @@ const InputWithTitle = React.forwardRef(({ title, onChange, onBlur, name, ...pro
     </div>
 )
 )
+
+
+
 
 
 export default InputWithTitle

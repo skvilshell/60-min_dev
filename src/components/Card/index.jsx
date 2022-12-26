@@ -13,6 +13,10 @@ import { Link } from "react-router-dom";
 export default function Card({ title, position, metro, time, price, size1, to }) {
     const styles = [style1, style2, style3]
     const size = size1 || 0
+    function setMinPrice(arr) {
+        let max = arr[0].price
+        return max
+    }
     return (
         <div className={styles[size].root}>
             <img src={preview} alt="Превью помещения" />
@@ -27,14 +31,16 @@ export default function Card({ title, position, metro, time, price, size1, to })
                 </div>
             </div>
             <div className={styles[size].price__button}>
-                <h3><span>от </span>{price}<span> руб</span></h3>
+                <h3><span>от </span>{setMinPrice(price)}<span> руб</span></h3>
                 {
                     size !== 2 &&
-                    <Link to={to}>
-                        <BtnPraimary
-                            title={"подробнее"}
-                        />
-                    </Link>
+                    <div>
+                        <Link to={to}>
+                            <BtnPraimary
+                                title={"подробнее"}
+                            />
+                        </Link>
+                    </div>
                 }
             </div>
         </div>

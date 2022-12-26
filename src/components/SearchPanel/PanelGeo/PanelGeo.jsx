@@ -11,8 +11,8 @@ export default function PanelGeo({ setActiveEl, activeEl }) {
 
    const [variant, setVariant] = useState(0)
    const [active, setActive] = useState(false)
-   const [geoL, setGeoL] = useState({ name: "местоположение" })
-   const [geoM, setGeoM] = useState({ name: "местоположение" })
+   const [geoL, setGeoL] = useState({ name: "Местоположение" })
+   const [geoM, setGeoM] = useState({ name: "Местоположение" })
    const dispatch = useDispatch()
    const metro = useSelector(state => state.metro.metro)
    const district = useSelector(state => state.district.district)

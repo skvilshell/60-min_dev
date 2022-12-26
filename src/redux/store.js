@@ -3,6 +3,8 @@ import city from "./slices/citysCategoriesSlice"
 import filter from "./slices/filter"
 import metro from "./slices/metros"
 import district from "./slices/district"
+import menu from "./slices/menu"
+
 
 
 export default configureStore({
@@ -10,6 +12,7 @@ export default configureStore({
       city,
       filter,
       metro,
-      district
+      district,
+      menu
    },
 })
