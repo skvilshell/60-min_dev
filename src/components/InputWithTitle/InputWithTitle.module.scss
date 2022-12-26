@@ -18,7 +18,7 @@ input {
 
     .input {
         width: 100%;
-        border-radius: 10px;
+        border-radius: 20px;
         height: 32px;
         margin-top: 5px;
         background: #EFEFEF;
@@ -26,14 +26,14 @@ input {
         padding-left: 10px;
         @include v.regularNone;
         font-weight: bold;
-        transition: .2s ease all;
-        color: v.$mainColorHover;
+        transition: .4s ease all;
+        color: v.$textColor;
 
         &:focus {
-            color: v.$textColor;
-            transition: .2s ease all;
+            
+            transition: .4s ease all;
+            border: 2px solid v.$mainColor;
             outline: none;
-            border: solid 2px v.$mainColor;
         }
     }
 }

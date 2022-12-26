@@ -1,30 +1,37 @@
 @use "../../variables.scss" as v;
 
-body{
+body {
    background: #EEEFF1;
 }
 
 
-.root{
+.root {
    background-color: white;
    border-radius: 20px;
    width: 470px;
-   margin:0 auto;
+   margin: 60px auto;
    padding: 23px;
-   margin-top: 60px;
 
-   .title{
+
+   .error {
+      color: #bc2828;
+      margin-left: 10px;
+      @include v.smallNone;
+      font-weight: bold;
+   }
+
+   .title {
       color: v.$textColor;
       text-align: center;
    }
 
-   .inputs{
+   .inputs {
       margin: 0 auto;
       width: 347px;
       margin-top: 20px;
       position: relative;
 
-      .forgot{
+      .forgot {
          color: v.$secondDarkColor;
          @include v.smallNone;
          font-weight: 400;
@@ -33,29 +40,30 @@ body{
          position: absolute;
          right: 0;
 
-         &:hover{
+         &:hover {
             border-bottom: 1px solid v.$secondDarkColor;
          }
       }
 
-      
+
 
       label {
          color: v.$textColor;
          @include v.regularNone;
          font-weight: 400;
          user-select: none;
-         .memory{
+
+         .memory {
             margin-right: 9px;
-            transform:scale(1.2);
-            opacity:0.9;
-            cursor:pointer;
+            transform: scale(1.2);
+            opacity: 0.9;
+            cursor: pointer;
             margin-top: 38px;
          }
       }
    }
 
-   .buttons{
+   .buttons {
       margin: 0 auto;
       display: flex;
       flex-direction: column;

@@ -2,16 +2,19 @@ import React from "react";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
+import user_logo from "../../assets/img/user.svg"
 import BtnSuccess from "../BtnSuccess/BtnSucces";
 import Popup from "../Popup/Popup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowMenu } from "../../redux/slices/menu";
 
 
 export default function Header() {
 
   const city = useSelector(state => state.city.city.name)
+  const dispatch = useDispatch()
 
-  let i = 0;
+  let i = 1;
   const navArr = [
     {
       title: "главная",
@@ -36,17 +39,15 @@ export default function Header() {
   ];
 
   const settings = [
-    { showLocation: true, isAuth: false },
-    { showLocation: false, isAuth: false },
-    { showLocation: false, isAuth: true },
+    { isAuth: false },
+    { isAuth: true }
   ];
-  const [showMenu, setShowMenu] = React.useState(false);
 
   return (
     <header className={styles.root}>
       <div className={styles.logo_loc}>
         <img className={styles.logo} src={logo} alt="Логотип" />
-        {settings[i].showLocation && <Popup />}
+        <div className={styles.popup}><Popup /></div>
       </div>
 
       <ul className={styles.header__menu}>
@@ -62,12 +63,15 @@ export default function Header() {
       {settings[i].isAuth ? (
         <div className={styles.header__user}>
           <BtnSuccess title="Добавить объект" />
-          <div className={styles.addition}></div>
           <div className={styles.user__info}>
-            <div className={styles.user}></div>
-            <div className={styles.header__mail}>
-              <p>ivanivanovgmail.com</p>
-            </div>
+            <Link to='/login'>
+              <p className={styles.header__mail}>
+                ivanivanovgmail.com
+              </p>
+            </Link>
+            <Link to='/login'>
+              <img className={styles.user_logo} src={user_logo} alt="" />
+            </Link>
           </div>
         </div>
       ) : (
@@ -75,14 +79,13 @@ export default function Header() {
           <Link to='/login'>
             <BtnSuccess title="Войти" />
           </Link>
-          <div
-            className={styles.addition}
-            onClick={() => {
-              setShowMenu(0);
-            }}
-          ></div>
         </div>
       )}
+      <div onClick={() => dispatch(setShowMenu(true))} className={styles.burger_menu}>
+        <span className={styles.burger_item}></span>
+        <span className={styles.burger_item}></span>
+        <span className={styles.burger_item}></span>
+      </div>
     </header>
   );
 }

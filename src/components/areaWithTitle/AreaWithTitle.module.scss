@@ -15,12 +15,12 @@
       resize: none;
       @include v.regularNone;
       font-weight: bold;
-      transition: .2s ease all;
-      color: v.$mainColorHover;
+      transition: .4s ease all;
+      color: v.$textColor;
 
       &:focus {
          color: v.$textColor;
-         transition: .2s ease all;
+         transition: .4s ease all;
          outline: none;
          border: solid 2px v.$mainColor;
       }

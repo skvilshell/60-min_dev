@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import svgPhone from "../../assets/img/acc_supp_phone.svg";
-import svgMail from "../../assets/img/acc_supp_mail.svg";
-import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
+import svgPhone from "../../../assets/img/acc_supp_phone.svg";
+import svgMail from "../../../assets/img/acc_supp_mail.svg";
+import BtnPraimary from "../../../components/BtnPraimary/BtnPraimary";
 
 import styles from "./Support.module.scss";
 

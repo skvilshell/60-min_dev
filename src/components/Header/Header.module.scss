@@ -1,7 +1,6 @@
 @use "../../variables.scss" as v;
 
 .root {
-   margin: 0 auto;
    width: 100%;
    background: #3f3838;
    display: flex;
@@ -36,10 +35,6 @@
       gap: 23px;
       list-style: none;
       color: #FFFFFF;
-
-      li:hover {
-         color: rgb(192, 192, 192);
-      }
    }
 
 
@@ -60,28 +55,29 @@
 
       .user__info {
          display: flex;
-         width: 206px;
          align-items: center;
          justify-content: space-between;
          margin-left: 12px;
 
-         .user {
-            background-image: url("../../image/position.svg");
-            width: 26.54px;
-            height: 26.68px;
-            background-repeat: no-repeat;
-            background-size: contain;
+         .header__mail {
+            max-width: 190px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 700;
+            color: #FFFFFF;
+
+            @media (width<1360px) {
+               display: none;
+            }
          }
 
-         .header__mail {
-            width: 164px;
+         .user_logo {
+            display: none;
+            cursor: pointer;
 
-            >p {
-               font-family: 'PT Sans';
-               font-style: normal;
-               font-weight: 700;
-               font-size: 16px;
-               color: #FFFFFF;
+            @media (width<1360px) {
+               display: block;
             }
          }
       }
@@ -102,6 +98,39 @@
       }
    }
 
+   .burger_menu {
+      width: 30px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      display: none;
+
+      .burger_item {
+         width: 100%;
+         background: #fff;
+         height: 3px;
+         border-radius: 10px;
+      }
+   }
+
+   @media (width<1170px) {
+      .header__menu{
+         display: none;
+      }
+      .header__user{
+         display: none;
+      }
+      .header__container2{
+         display: none;
+      }
+      .popup{
+         display: none;
+      }
+      .burger_menu{
+         display: flex;
+      }
+   }
 
    @media screen and (max-width<600px) {
       .header__position {

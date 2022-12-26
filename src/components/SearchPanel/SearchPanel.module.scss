@@ -4,22 +4,25 @@
    display: flex;
    align-items: center;
    gap: 30px;
-
    .root {
-
-      flex-wrap: wrap;
       @include v.glassPanel;
       cursor: pointer;
       padding: 10px 18px;
+      position: relative;
       display: flex;
       gap: 20px;
-      position: relative;
-
    }
 
    .active {
       background: v.$mainColor;
       color: #EFEFEF;
       border: none;
+   }
+}
+
+@media (width<768px) {
+   .root{
+      flex-wrap: wrap;
+      width:435px
    }
 }

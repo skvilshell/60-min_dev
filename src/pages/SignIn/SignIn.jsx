@@ -2,21 +2,29 @@ import React, { useState } from "react";
 import InputWithTitle from "../../components/InputWithTitle";
 import styles from "./s.module.scss"
 import BtnSecondary from "../../components/BtnSecondary";
+import { Link } from "react-router-dom"
 import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 
 
 export default function SignIn() {
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        mode: "onBlur",
+    });
 
-    const { handleSubmit, control } = useForm();
+    const [errAuth, setErrAuth] = useState(false)
 
     const onSubmit = data => {
         axios({
             method: 'post',
             url: 'https://60-min.ru/login',
             data: data
-        }).then(res => console.log(res))
+        }).then(res => {
+            console.log(res)
+            setErrAuth(false)
+        })
+            .catch(e => setErrAuth(true))
     }
 
 
@@ -27,29 +35,25 @@ export default function SignIn() {
 
             <h3 className={styles.title}>Вход в личный кабинет</h3>
             <div className={styles.inputs}>
-                <Controller
-                    name="email"
-                    control={control}
-                    render={({ field }) => (
-                        <InputWithTitle
-                            title={"Введите e-mail"}
-                            placeholder="example@exapmle.com"
-                            onChange={(e) => field.onChange(e)}
-                        />
-                    )}
+
+                <InputWithTitle
+                    title="Введите e-mail"
+                    type="email"
+                    {...register("email", {
+                        required: "Это обязательное поле",
+                    })}
                 />
-                <Controller
-                    name="password"
-                    control={control}
-                    render={({ field }) => (
-                        <InputWithTitle
-                            title={"Введите пароль"}
-                            placeholder="example"
-                            onChange={(e) => field.onChange(e)}
-                            type="password"
-                        />
-                    )}
+                {errors?.email && <p className={styles.error}>заполните поле</p>}
+                {errAuth && <p className={styles.error}>не правильный логин или пароль</p>}
+                <InputWithTitle
+                    title="Введите пароль"
+                    type="password"
+                    {...register("password", {
+                        required: "Это обязательное поле",
+                    })}
                 />
+                {errors?.password && <p className={styles.error}>заполните поле</p>}
+
                 {/*//! <p className={styles.forgot}>Забыли пароль?</p> */}
                 <label htmlFor="memory">
                     <input

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import star from '../../assets/img/Star.svg'
+import star from '../../assets/img/star.svg'
 import styles from "./Comment.module.scss"
 
 export default function Comment({ name, rate, positive, negative }) {

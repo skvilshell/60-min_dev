@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import SearchPanel from "../../components/SearchPanel/SearchPanel";
 import { CardLarge, CardMedium } from "../../components/Skeletons";
 import BtnPraimary from "../../components/BtnPraimary/BtnPraimary";
-import MapSearch from "../../components/MapSearch/MapSearch";
 
 import svgMap from "../../assets/img/map.svg";
 import svgStat from "../../assets/img/statistic.svg";
@@ -44,11 +43,31 @@ export default function Main() {
     setLoading(true)
   }, [activeCity])
 
+  var i = 0, j = 0;
+  let dimension768 = false, dimension992 = false
+  if (window.innerWidth < 992 && window.innerWidth > 768) {
+    dimension992 = true;
+    cards.splice(2, 3)
+    j = 1
+  }
+
+  if (window.innerWidth < 768 && window.innerWidth > 576) {
+    i = 1;
+    dimension768 = true;
+    cards.splice(3, 2)
+  }
+
+  if (window.innerWidth < 576) {
+    j = 2
+    i = 1
+    cards.splice(2, 3)
+  }
+
   return (
     <main id="search" className={s.root}>
       <section className={s.section__search}>
         <h1 align="center">
-          подобрать отель на час <br /> в городе {activeCity.name}{" "}
+          Подобрать отель на час <br /> в городе {activeCity.name}{" "}
         </h1>
         <SearchPanel />
       </section>
@@ -64,6 +83,7 @@ export default function Main() {
               </h1>
               <h1 className={s.city}>{activeCity.name}</h1>
             </div>
+
             {
               loading
                 ?
@@ -72,11 +92,15 @@ export default function Main() {
                   position={cards[0]?.address}
                   metro={`${metros[cards[0]?.metro_id]?.name || 'нет'}`}
                   time={'от 2х'}
-                  price={"1000"}
+                  price={"1000р"}
+                  size1={i}
                   to={`/property/${cards[0]?.id}`}
                 />
-                : <CardLarge />
+                : dimension768
+                  ? <CardMedium />
+                  : <CardLarge />
             }
+
           </div>
         </div>
 
@@ -91,7 +115,8 @@ export default function Main() {
                     position={item?.address}
                     metro={`${metros[item?.metro_id]?.name || 'нет'}`}
                     time={'от 2х'}
-                    price={"1000"}
+                    price={item?.price}
+                    size1={j}
                     to={`/property/${item?.id}`}
                   />
                 )
@@ -141,7 +166,7 @@ export default function Main() {
         <div className={s.block}>
           <div className={s.block_text}>
             <h2 className={s.block_title}>
-              самый полный каталог почасового жилья{" "}
+              Самый полный каталог почасового жилья{" "}
             </h2>
             <p className={s.block_subtitle}>
               Большой выбор жилья как в центре, так и в спальных районах крупных
@@ -155,7 +180,7 @@ export default function Main() {
         <div className={s.block}>
           <img src={svgStat} alt="..." />
           <div className={s.block_text}>
-            <h2 className={s.block_title}>работа без посредников и наценок</h2>
+            <h2 className={s.block_title}>Работа без посредников и наценок</h2>
             <p className={s.block_subtitle}>
               Сайт напрямую сотрудничает с отелями и арендодателями, поэтому
               цены остаются на том же уровне.{" "}
@@ -166,7 +191,7 @@ export default function Main() {
         <div className={s.block}>
           <div className={s.block_text}>
             <h2 className={s.block_title}>
-              вся важная информация о квартирах и отелях в одном месте{" "}
+              Вся важная информация о квартирах и отелях в одном месте{" "}
             </h2>
             <p className={s.block_subtitle}>
               Больше не надо сравнивать условия проживания, фотографии и цены на
