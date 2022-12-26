@@ -44,23 +44,23 @@ export default function Main() {
   }, [activeCity])
 
   var i = 0, j = 0;
-  let dimension768 = false, dimension992=false
+  let dimension768 = false, dimension992 = false
   if (window.innerWidth < 992 && window.innerWidth > 768) {
     dimension992 = true;
-    cards.splice(2,3)
-    j=1
+    cards.splice(2, 3)
+    j = 1
   }
 
   if (window.innerWidth < 768 && window.innerWidth > 576) {
     i = 1;
     dimension768 = true;
-    cards.splice(3,2)
+    cards.splice(3, 2)
   }
 
   if (window.innerWidth < 576) {
-    j=2
-    i=1
-    cards.splice(2,3)
+    j = 2
+    i = 1
+    cards.splice(2, 3)
   }
 
   return (
@@ -83,7 +83,7 @@ export default function Main() {
               </h1>
               <h1 className={s.city}>{activeCity.name}</h1>
             </div>
-            
+
             {
               loading
                 ?
@@ -92,15 +92,15 @@ export default function Main() {
                   position={cards[0]?.address}
                   metro={`${metros[cards[0]?.metro_id]?.name || 'нет'}`}
                   time={'от 2х'}
-                  price={"1000"}
+                  price={"1000р"}
                   size1={i}
                   to={`/property/${cards[0]?.id}`}
                 />
                 : dimension768
-                ?<CardMedium/>
-                :<CardLarge />
+                  ? <CardMedium />
+                  : <CardLarge />
             }
-            
+
           </div>
         </div>
 
@@ -115,7 +115,7 @@ export default function Main() {
                     position={item?.address}
                     metro={`${metros[item?.metro_id]?.name || 'нет'}`}
                     time={'от 2х'}
-                    price={"1000"}
+                    price={item?.price}
                     size1={j}
                     to={`/property/${item?.id}`}
                   />

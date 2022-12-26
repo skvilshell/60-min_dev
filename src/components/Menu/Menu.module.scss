@@ -1,166 +1,87 @@
 @use '../../variables.scss' as v;
 
-.root{
+.root {
     background-color: #3A3A3A;
     height: 100%;
     position: fixed;
+    z-index: 200;
     right: 0;
-    top:0;
+    top: 0;
+    width: 100%;
     border-radius: 10px 0px 0px 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: .5s ease all;
 
-    .menu__exit{
-        display: flex;
-        justify-content: end;
-        margin: 33px 15px;
+    &.showMenu {
+        transform: translateX(0%);
+        transition: .5s ease all;
     }
- 
-    .menu__container{
-        width: 330px;
-        height: 60%;
-        font-family: 'PT Sans';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 30px;
+
+
+    .close {
+        cursor: pointer;
+        position: absolute;
+        font-size: 3rem;
+        font-weight: bold;
+        color: #fff;
+        top: 0;
+        right: 0;
+        padding: 20px;
+    }
+
+    .menu__container {
+        max-width: 800px;
+        @include v.regularNone;
         color: #FFFFFF;
-        text-align: center;
+        padding: 5%;
 
-        .menu__window{
-            width: 90%;
-            height: 85%;
+        .menu__window {
             background-color: #E6E6E6;
-            margin: 27px auto;
+            padding: 2rem;
             border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
 
-            .select {
-                position: relative;
-                margin:5% auto;
-                cursor: pointer;
-                padding-left: 27px;
-                &::after{
-                   content: "";
-                   background: url("../../assets/img/position.svg") center / cover no-repeat;
-                   width: 20px;
-                   height: 24px;
-                   position: absolute;
-                   left: 0;
-                   top: 0;
-                }
-             
-                *{
-                   @include v.largeNone;
-                }
-                
-                .sort__label {
-                   display: flex;
-                   align-items: center;
-             
-                   svg {
-                      margin-left: 8px;
-             
-                      &.active {
-                        transform: rotate(180deg);
-                        }
-                    }
-             
-             
-                   span {
-                        color: v.$textDarkColor;
-                        cursor: pointer
-                    }
-                }
-             
-                .sort__popup {
-                   position: absolute;
-                   left: 0;
-                   margin-top: 15px;
-                   background: #ffffff;
-                   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
-                   border-radius: 10px;
-                   overflow: hidden;
-                   padding: 10px 0;
-                   width: 250px;
-             
-                   ul {
-                      overflow: hidden;
-             
-                      li {
-                         padding: 12px 20px;
-                         color:v.$textDarkColor;
-                         cursor: pointer
-                      }
-             
-                      li.active,
-                      li:hover {
-                         background: rgba(254, 95, 30, 0.05)
-                      }
-             
-                      li.active {
-                        font-weight: bold;
-                        color: #fe5f1e;
-                      }
-                   }
-                }
+
+            * {
+                color: v.$textColor;
+                font-weight: bold;
             }
 
-            .menu__buttons{
-                height:70%;
+            .menu__buttons {
+                margin-top: 50px;
+                display: grid;
+                gap: 4px;
 
-                .menu__button {
-                    display: flex;
-                    height: 90%;
-                    list-style: none;
-                    color: v.$textDarkColor;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    margin-left: 15%;
-                    font-family: 'PT Sans';
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 30px;
-                    line-height: 39px;
-                    margin-bottom: 30px;
-                    justify-content: space-between;
-                
-                    li{
-                        position: relative;
-                        padding-left: 35px;
-                    }
-                
-                    &>li::before{
-                        content: "";
-                        background: url("../../assets/img/home.svg") center / cover no-repeat;
-                        width: 24px;
-                        height: 28px;
-                        position: absolute;
-                        left: 0;
-                        top: 5px;
-                    }
-
-                    .active{
-                        color:#E9840F;
-
-                        &::before{
-                            background: url("../../assets/img/active_home.svg") center / cover no-repeat;
-                        }
-                    }
+                p {
+                    padding-left: 25px;
+                    position: relative;
                 }
+
+                p::before {
+                    content: "";
+                    background: url("../../assets/img/home.svg") left / cover no-repeat;
+                    width: 15px;
+                    height: 18px;
+                    position: absolute;
+                    left: 0;
+                    top: 0px;
+                }
+
+
+
             }
         }
     }
 
-    .menu__logo{
-        display: flex;
-        justify-content: end;
 
-        .logo {
-            width: 252px;
-            height: 72px;
-        }
+    .logo {
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+        width: 252px;
+        height: 72px;
     }
 }

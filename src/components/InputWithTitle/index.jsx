@@ -1,16 +1,23 @@
 import React from "react";
 import styles from "./InputWithTitle.module.scss"
 
-export default function InputWithTitle({ title, ...props }) {
+const InputWithTitle = React.forwardRef(({ title, onChange, onBlur, name, ...props }, ref) => (
+    <div className={styles.root}  >
+        <p className={styles.title}>{title}</p>
+        <input
+            className={styles.input}
+            name={name}
+            ref={ref}
+            onChange={onChange}
+            onBlur={onBlur}
+            {...props}
+        />
+    </div>
+)
+)
 
-    return (
-        <div className={styles.root}  >
-            <p className={styles.title}>{title}</p>
-            <input
-                {...props}
-                className={styles.input}
-            />
-        </div>
-    )
-}
 
+
+
+
+export default InputWithTitle
