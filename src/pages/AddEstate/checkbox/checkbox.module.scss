@@ -1,0 +1,31 @@
+@use '../../../variables.scss' as v;
+
+.root {
+   position: relative;
+   @include v.largeNone;
+   padding-left: 30px;
+
+   &::before {
+      content: "✓";
+      position: absolute;
+      color: #fff;
+      border-radius: 4px;
+      background: #fff;
+      left: 0;
+      height: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid v.$textColor;
+   }
+}
+
+.checkbox {
+   width: 0;
+   height: 0;
+   position: absolute;
+   
+
+   &:checked+.root::before {
+      background: v.$mainColor;
+   }
+}

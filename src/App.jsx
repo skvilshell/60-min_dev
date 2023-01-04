@@ -28,6 +28,7 @@ function App() {
             <Route path="appartment" element={<Builds name="квартиры" type={2} />} />
             <Route path="house" element={<Builds name="дома" type={3} />} />
           </Route>
+          <Route path="property/new" element={<AddEstate />} />
           <Route path="property/:id" element={<ObjectPage />} />
           <Route path="review" element={<Rewiew />} />
           <Route path="account" element={<MyAds />}>

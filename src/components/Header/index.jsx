@@ -62,7 +62,9 @@ export default function Header() {
 
       {settings[i].isAuth ? (
         <div className={styles.header__user}>
+          <Link to="/property/new">
           <BtnSuccess title="Добавить объект" />
+          </Link>
           <div className={styles.user__info}>
             <Link to='/login'>
               <p className={styles.header__mail}>
